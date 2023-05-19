@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\api\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\api\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,4 @@ use App\Http\Controllers\api\ProductController;
 |
 */
 
-
-Route::post('product/add_product', [ProductController::class, 'add_product']);
+Route::post('dashboard/dashboard_login', [AuthController::class, 'dashboard_login']);

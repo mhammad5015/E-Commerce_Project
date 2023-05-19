@@ -15,8 +15,8 @@ use App\Http\Controllers\api\AuthController;
 |
 */
 
-Route::post('super_admin/login', [AuthController::class, 'super_adminLogin']);
-
 Route::group(['prefix' => 'super_admin', 'middleware' => ['auth:admin_api', 'scopes:super_admin']], function () {
     Route::post('logout', [AuthController::class, 'super_adminLogout']);
 });
+
+Route::post('super_admin/add_admin',[AuthController::class, 'add_admin']);
