@@ -160,53 +160,55 @@ class AuthController extends Controller
 
 
     //== ADMIN ==//
-    // ADMIN REGISTER
-    public function adminRegister(Request $request)
+    // // ADMIN REGISTER
+    // public function adminRegister(Request $request)
+    // {
+    //     // validation
+    //     $request->validate([
+    //         'company_name' => 'required',
+    //         'email' => 'required|email|unique:admins',
+    //         'password' => 'required|confirmed',
+    //         'phone_number' => 'required|min:9|max:10',
+    //         'address' => 'required',
+    //         'logo' => ['image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
+    //         'Commercial_Register' => 'required|mimes:doc,pdf,docx,jpg,jpeg,png,gif|max:10000',
+    //     ]);
+    //     // inserting in admins table
+    //     $input = $request->except('address');
+    //     $input['password'] = Hash::make($input['password']);
+    //     $input['token'] = Str::random(60);
+    //     $input['logo'] = 'storage/' . $request->file('logo')->store('images', 'public');
+    //     $input['Commercial_Register'] = 'storage/' . $request->file('Commercial_Register')->store('files', 'public');
+    //     $admin = Admin::create($input);
+    //     $accessToken = $admin->createToken('MyApp', ['admin'])->accessToken;
+    //     $addresses = $request->only('address');
+    //     // inserting in addresses table
+    //     foreach ($addresses as $addr) {
+    //         foreach ($addr as $a) {
+    //             $address[] = DB::table('addresses')->insert([
+    //                 'admin_id' => $admin->id,
+    //                 'address' => $a
+    //             ]);
+    //         }
+    //     }
+    //     // get admin profile
+    //     $admin_data = $admin->load('addresses');
+    //     // sending response
+    //     return response()->json([
+    //         'admin_data' => $admin_data,
+    //         'accessToken' => $accessToken,
+    //     ]);
+    // }
+
+    // DASHBOARD LOGIN
+    public function dashboard_login(Request $request)
     {
         // validation
         $request->validate([
-            'company_name' => 'required',
-            'email' => 'required|email|unique:admins',
-            'password' => 'required|confirmed',
-            'phone_number' => 'required|min:9|max:10',
-            'address' => 'required',
-            'logo' => ['image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
-            'Commercial_Register' => 'required|mimes:doc,pdf,docx,jpg,jpeg,png,gif|max:10000',
+            "email" => "required|email",
+            "password" => "required"
         ]);
-        // inserting in admins table
-        $input = $request->except('address');
-        $input['password'] = Hash::make($input['password']);
-        $input['token'] = Str::random(60);
-        $input['logo'] = 'storage/' . $request->file('logo')->store('images', 'public');
-        $input['Commercial_Register'] = 'storage/' . $request->file('Commercial_Register')->store('files', 'public');
-        $admin = Admin::create($input);
-        $accessToken = $admin->createToken('MyApp', ['admin'])->accessToken;
-        $addresses = $request->only('address');
-        // inserting in addresses table
-        foreach ($addresses as $addr) {
-            foreach ($addr as $a) {
-                $address[] = DB::table('addresses')->insert([
-                    'admin_id' => $admin->id,
-                    'address' => $a
-                ]);
-            }
-        }
-        // get admin profile
-        $admin_data = $admin->load('addresses');
-        // sending response
-        return response()->json([
-            'admin_data' => $admin_data,
-            'accessToken' => $accessToken,
-        ]);
-    }
-
-    // ADMIN LOGIN
-    public function adminLogin(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
+        // check admin
         $admin = Admin::where("email", $request->email)->first();
         if (isset($admin)) {
             if (Hash::check($request->password, $admin->password)) {
@@ -214,10 +216,11 @@ class AuthController extends Controller
                 $token = $admin->createToken('MyApp', ['admin'])->accessToken;
                 // send response
                 return response()->json([
-                    "status" => true,
-                    "message" => "Admin Logged In Succesfully ",
-                    "data" => $admin,
-                    "token" => $token
+                    "status" => 1,
+                    "is_super_admin" => 0,
+                    "message" => "Admin Loged In Succesfully ",
+                    "token" => $token,
+                    "data" => $admin
                 ]);
             } else {
                 return response()->json([
@@ -225,9 +228,31 @@ class AuthController extends Controller
                     "messege" => "Password didn't match"
                 ]);
             }
+        } else {
+            // check super_admin
+            $super_admin = SuperAdmin::where("email", $request->email)->first();
+            if (isset($super_admin)) {
+                if (Hash::check($request->password, $super_admin->password)) {
+                    // create token
+                    $token = $super_admin->createToken('MyApp', ['super_admin'])->accessToken;
+                    // send response
+                    return response()->json([
+                        "status" => 1,
+                        "is_super_admin" => 1,
+                        "message" => "Super_admin Loged In Succesfully",
+                        "token" => $token,
+                        "data" => $super_admin
+                    ]);
+                } else {
+                    return response()->json([
+                        "status" => 0,
+                        "message" => "Password Didn't Match"
+                    ]);
+                }
+            }
         }
         return response()->json([
-            "status" => false,
+            "status" => 0,
             "message" => "Not Found"
         ]);
     }
