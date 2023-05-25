@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/password/email',[AuthController::class, 'forgetPassword']);
- Route::post('code/check',[AuthController::class, 'checkCode']);
+Route::post('code/check',[AuthController::class, 'checkCode']);

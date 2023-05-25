@@ -195,14 +195,12 @@ class AuthController extends Controller
             'phone_number' => 'required|min:9|max:10',
             'address' => 'required',
             'logo' => ['image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
-            'Commercial_Record' => 'required|mimes:doc,pdf,docx,jpg,jpeg,png,gif|max:10000',
         ]);
         // inserting in admins table
         $input = $request->except('address');
         $input['password'] = Hash::make($input['password']);
         $input['token'] = Str::random(60);
         $input['logo'] = 'storage/' . $request->file('logo')->store('images', 'public');
-        $input['Commercial_Record'] = 'storage/' . $request->file('Commercial_Record')->store('files', 'public');
         $admin = Admin::create($input);
         $addresses = $request->only('address');
         // inserting in addresses table
