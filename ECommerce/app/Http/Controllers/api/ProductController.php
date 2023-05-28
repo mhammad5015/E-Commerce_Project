@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Color;
+use App\Models\PendingProduct;
 use App\Models\Product;
 use App\Models\Product_image;
 use App\Models\Product_tag;
@@ -35,6 +36,11 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         $product->save();
+
+        $pendingProduct = new PendingProduct();
+        $pendingProduct->product_id = $product->id;
+        $pendingProduct->save();
+
         foreach ($request->product_image as $image) {
             $product_image = new Product_image();
             $product_image->product_id = $product->id;
@@ -62,9 +68,10 @@ class ProductController extends Controller
             $product->save();
             $variant->save();
         }
+        $data = Product::with('productImages', 'productTags', 'productVariants')->find($product->id);
         return response()->json([
             'status' => true,
-            'product_data' => $product,
+            'product_data' => $data,
         ]);
     }
 
@@ -77,32 +84,56 @@ class ProductController extends Controller
             'message' => 'Product Deleted Duccessfully'
         ]);
     }
+
+    // product profile
+    public function product_profile($product_id)
+    {
+        $product = Product::with('productImages', 'productTags', 'productVariants')->find($product_id);
+        return response()->json([
+            'product' => $product
+        ]);
+    }
     /////////////////////////////////////////////////////////////////////////////////////////
     //= SUPER_ADMIN =//
-    // aprove product
+    // aprove product or not
     public function aprove_product(Request $request)
     {
-        // $pendingProduct = PendingProduct::where('product_id', $request->product_id)->firstOrFail();
-        // $product = Product::findOrFail($request->product_id);
-
-        // if ($request->approve) {
-        //     $product->approved = true;
-        //     $product->save();
-        //     $pendingProduct->delete();
-        //     return response()->json(['message' => 'Product approved successfully.']);
-        // } else {
-        //     $pendingProduct->delete();
-        //     $product->delete();
-        //     return response()->json(['message' => 'Product rejected successfully.']);
-        // }
-    }
-    // reject product
-    public function reject_product($product_id)
-    {
+        $pendingProduct = PendingProduct::where('product_id', $request->product_id)->firstOrFail();
+        $product = Product::findOrFail($request->product_id);
+        if ($request->approved) {
+            // approve
+            $product->approved = true;
+            $product->save();
+            $pendingProduct->forceDelete();
+            return response()->json([
+                'message' => 'Product approved successfully.'
+            ]);
+        } else {
+            // reject
+            $pendingProduct->forceDelete();
+            $product->forceDelete();
+            return response()->json([
+                'message' => 'Product rejected successfully.'
+            ]);
+        }
     }
     // get pending products
     public function get_pending_products()
     {
+        $pendingProducts = PendingProduct::with('product')->get();
+        return response()->json([
+            'pendingProducts' => $pendingProducts
+        ]);
+    }
+
+    // get all products
+    public function get_all_products()
+    {
+        $products = Product::with('productImages', 'productTags', 'productVariants')->where('approved', true)->get();
+        return response()->json([
+            'status' => true,
+            'products' => $products
+        ]);
     }
 
     // get colors

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('color_id')->constrained('colors');
             $table->foreignId('size_id')->constrained('sizes');
             $table->integer('variant_quantity');
-            $table->timestamps();
         });
     }
 

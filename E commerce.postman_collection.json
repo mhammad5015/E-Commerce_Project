@@ -696,23 +696,66 @@
 									"type": "default"
 								},
 								{
-									"key": "product_image",
+									"key": "product_image[]",
 									"type": "file",
 									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
 								},
 								{
-									"key": "color_id",
-									"value": "2",
-									"type": "default"
+									"key": "tag[]",
+									"value": "fire Tshirt1",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "size_id",
+									"key": "tag[]",
+									"value": "music Tshirt1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "tag[]",
+									"value": "tag Tshirt1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "product_image[]",
+									"type": "file",
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/Modern-Minimalist-Scorpion-Logo.png"
+								},
+								{
+									"key": "product_image[]",
+									"type": "file",
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
+								},
+								{
+									"key": "variants[0][color_id]",
 									"value": "1",
 									"type": "default"
 								},
 								{
-									"key": "variant_quantity",
+									"key": "variants[0][size_id]",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "variants[0][variant_quantity]",
 									"value": "10",
+									"type": "default"
+								},
+								{
+									"key": "variants[1][color_id]",
+									"value": "4",
+									"type": "default"
+								},
+								{
+									"key": "variants[1][size_id]",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "variants[1][variant_quantity]",
+									"value": "15",
 									"type": "default"
 								}
 							]
@@ -727,6 +770,237 @@
 								"api",
 								"product",
 								"add_product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/product/delete_product/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"delete_product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "approve_product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\":5,\r\n    \"approved\":true\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/api/product/aprove_product",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"aprove_product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_pending_products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/product/get_pending_products",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"get_pending_products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product_profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/product/product_profile/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"product_profile",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_colors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product/get_colors",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"get_colors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_sizes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product/get_sizes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"get_sizes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/product/get_all_products",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"get_all_products"
 							]
 						}
 					},

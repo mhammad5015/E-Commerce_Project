@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('price');
             $table->text('description')->nullable();
             $table->boolean('have_discount')->default(false);
+            $table->boolean('approved')->default(false);
             $table->integer('product_quantity')->default(0);
             $table->timestamps();
         });

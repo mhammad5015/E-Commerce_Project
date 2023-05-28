@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product_image extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
