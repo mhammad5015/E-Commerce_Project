@@ -35,9 +35,7 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $input['token'] = str::random(60);
-        if (isset($input['profile_img_url'])) {
-            $input['profile_img_url'] = 'storage/' . $request->file('profile_img_url')->store('images', 'public');
-        }
+        $input['profile_img_url'] = 'storage/' . $request->file('profile_img_url')->store('images', 'public');
         $user = User::create($input);
         $accessToken = $user->createToken('MyApp', ['user'])->accessToken;
         // sending response
@@ -251,7 +249,7 @@ class AuthController extends Controller
             } else {
                 return response()->json([
                     "status" => 0,
-                    "message" => "Password didn't match"
+                    "messege" => "Password didn't match"
                 ]);
             }
         } else {

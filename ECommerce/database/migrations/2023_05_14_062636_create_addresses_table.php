@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('admin_id')->constrained('admins');
             $table->string('address');
+            //$table->timestamps();
         });
     }
 

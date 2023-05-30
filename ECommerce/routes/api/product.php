@@ -21,7 +21,6 @@ Route::delete('product/delete_product/{id}', [ProductController::class, 'delete_
 Route::get('product/product_profile/{id}', [ProductController::class, 'product_profile']);
 Route::get('product/get_all_products', [ProductController::class, 'get_all_products']);
 
-
 Route::post('product/aprove_product', [ProductController::class, 'aprove_product']);
 Route::get('product/get_pending_products', [ProductController::class, 'get_pending_products']);
 

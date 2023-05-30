@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categories_id')->constrained('categories')->nullable();
             $table->string('name')->unique();
-            //$table->timestamps();
+            $table->text('image')->nullable();
+            $table->nestedSet();
+            $table->timestamps();
         });
     }
 
@@ -29,5 +30,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('categories');
+        Schema::NestedSet('categories');
     }
 };

@@ -14,7 +14,7 @@ class Admin extends Authenticatable
     protected $table = 'admins';
     //protected $primaryKey = "admin_id";
     protected $fillable = [
-        'company_name', 'email', 'password', 'logo', 'phone_number',
+        'company_name', 'email', 'password', 'logo', 'Commercial_Record', 'phone_number',
         'wallet',
     ];
     protected $hidden = [
@@ -29,4 +29,25 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Address::class);
     }
+
+
+    public function categoriesWithProducts(){
+        $admin_id=$this->id;
+     return $this->belongsToMany(Category::class,'products')
+      //  ->with('ancestors')
+        ->with(['products' => function ($query) use ($admin_id) {
+                $query->where('admin_id', $admin_id);
+            }])
+        ->wherePivot('admin_id',$this->id);
+}
+
+
+public function products(){
+    return $this->hasMany(Product::class);
+}
+
+public function categories(){
+    return $this->belongsToMany(Category::class,'products');
+}
+
 }

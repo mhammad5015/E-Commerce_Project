@@ -9,9 +9,12 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'description', 'have_discount', 'approved', 'product_quantity'];
+    //protected $fillable = ['name', 'price', 'description', 'have_discount', 'approved', 'product_quantity'];
 
-    public function pendingProduct()
+   protected $fillable = [ 'admin_id', 'category_id','name','price', 'description', 'have_discount', 'approved', 'product_quantity'];
+
+
+   public function pendingProduct()
     {
         return $this->hasOne(PendingProduct::class);
     }
@@ -28,4 +31,6 @@ class Product extends Model
     {
         return $this->hasMany(Variant::class);
     }
+
+
 }

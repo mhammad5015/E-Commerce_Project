@@ -30,3 +30,4 @@ Route::post('user/password/reset', [AuthController::class, 'userResetPassword'])
 
 Route::get('user/get', [HomeController::class, 'getUsers']);
 Route::post('user/{id}', [HomeController::class, 'getUser_details']);
+Route::get('user/get_Total_Users', [HomeController::class, 'get_Total_Users']);

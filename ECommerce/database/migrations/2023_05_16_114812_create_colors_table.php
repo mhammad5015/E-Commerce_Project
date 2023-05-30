@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('color');
             $table->string('hex', 7);
+           // $table->timestamps();
         });
     }
 

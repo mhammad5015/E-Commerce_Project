@@ -117,6 +117,7 @@ class ProductController extends Controller
             ]);
         }
     }
+
     // get pending products
     public function get_pending_products()
     {

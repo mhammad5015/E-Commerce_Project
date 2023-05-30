@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,10 @@ Route::group(['prefix' => 'super_admin', 'middleware' => ['auth:admin_api', 'sco
 });
 
 Route::post('super_admin/add_admin',[AuthController::class, 'add_admin']);
+
+/////Category
+Route::post('super_admin/create_category',[CategoryController::class, 'store']);
+Route::get('super_admin/get_category',[CategoryController::class, 'index']);
+Route::delete('super_admin/delete_category/{id}',[CategoryController::class, 'delete']);
+Route::post('super_admin/edit_category/{id}',[CategoryController::class, 'update']);
+

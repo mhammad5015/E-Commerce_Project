@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('phone_number')->unique()->numerical()->min(9)->max(10);
             $table->text('profile_img_url')->nullable();
             $table->double('wallet')->default(0)->nullable();
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 
