@@ -5,7 +5,6 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\SendCodeResetPassword;
-use App\Models\Address;
 use App\Models\Admin;
 use App\Models\ResetCodePassword;
 use App\Models\SuperAdmin;
@@ -35,13 +34,18 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $input['token'] = str::random(60);
-        $input['profile_img_url'] = 'storage/' . $request->file('profile_img_url')->store('images', 'public');
+        if (isset($input['profile_img_url'])) {
+            $input['profile_img_url'] = 'storage/' . $request->file('profile_img_url')->store('images', 'public');
+        }
         $user = User::create($input);
         $accessToken = $user->createToken('MyApp', ['user'])->accessToken;
+        $data = User::find($user->id);
         // sending response
         return response()->json([
-            'data' => $user,
-            'accessToken' => $accessToken,
+            "status" => 1,
+            "message" => "user registered successfully",
+            'data' => $data,
+            'token' => $accessToken,
         ]);
     }
 
@@ -165,7 +169,7 @@ class AuthController extends Controller
     {
         Auth::guard('admin_api')->user()->token()->revoke();
         return response()->json([
-            'status' => true,
+            'status' => 1,
             'message' => 'Admin Logged Out Successfuly'
         ]);
     }
@@ -180,7 +184,7 @@ class AuthController extends Controller
     {
         Auth::guard('super_admin_api')->user()->token()->revoke();
         return response()->json([
-            'status' => true,
+            'status' => 1,
             'message' => 'super admin logged out successfuly'
         ]);
     }
@@ -195,8 +199,9 @@ class AuthController extends Controller
             'phone_number' => 'required|min:9|max:10',
             'address' => 'required',
             'logo' => ['image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
+            'description',
         ]);
-        // inserting in admins table
+        // inserting in admins tablex`
         $input = $request->except('address');
         $input['password'] = Hash::make($input['password']);
         $input['token'] = Str::random(60);
@@ -216,7 +221,9 @@ class AuthController extends Controller
         $admin_data = $admin->load('addresses');
         // sending response
         return response()->json([
-            'admin_data' => $admin_data,
+            'status' => 1,
+            'message' => 'Admin added successfully',
+            'data' => $admin_data,
         ]);
     }
 
@@ -249,7 +256,7 @@ class AuthController extends Controller
             } else {
                 return response()->json([
                     "status" => 0,
-                    "messege" => "Password didn't match"
+                    "message" => "Password didn't match"
                 ]);
             }
         } else {

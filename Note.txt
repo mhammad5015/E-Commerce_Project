@@ -1,0 +1,5 @@
+"Personal access client not found. Please create one.",
+sol is : php artisan passport:install 
+
+php artisan ser
+php artisan migrate:fresh --seed

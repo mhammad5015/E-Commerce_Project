@@ -31,23 +31,30 @@ class Admin extends Authenticatable
     }
 
 
-    public function categoriesWithProducts(){
-        $admin_id=$this->id;
-     return $this->belongsToMany(Category::class,'products')
-      //  ->with('ancestors')
-        ->with(['products' => function ($query) use ($admin_id) {
+    public function categoriesWithProducts()
+    {
+        $admin_id = $this->id;
+        return $this->belongsToMany(Category::class, 'products')
+            //  ->with('ancestors')
+            ->with(['products' => function ($query) use ($admin_id) {
                 $query->where('admin_id', $admin_id);
             }])
-        ->wherePivot('admin_id',$this->id);
-}
+            ->wherePivot('admin_id', $this->id);
+    }
 
 
-public function products(){
-    return $this->hasMany(Product::class);
-}
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
-public function categories(){
-    return $this->belongsToMany(Category::class,'products');
-}
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'products');
+    }
 
+    public function adds()
+    {
+        return $this->hasMany(Ad::class, 'admin_id');
+    }
 }

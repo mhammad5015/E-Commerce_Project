@@ -18,26 +18,25 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-       // CREATE A SUPER ADMIN ACOUNT
+        // CREATE A SUPER ADMIN ACOUNT
         DB::table('super_admins')->insert([
-            'superadmin_name' => 'mhammad1',
-            'email' => 'mh1@gmail.com',
-            'password' => Hash::make('0234567890'),
+            'superadmin_name' => 'mhammad',
+            'email' => 'mhammad@gmail.com',
+            'password' => Hash::make('1234567890'),
         ]);
         DB::table('admins')->insert([
-          [  'company_name' => '1mhammad',
-            'email' => 'mh2@gmail.com',
-            'password' => Hash::make('1234567890'),
-            'logo'=>'jdjfhfhfebfjfj.png',
-            'Commercial_Record'=>'jjjfdkgkflfe.pdf',
-            'phone_number'=>'9123456789']
-            ,[
+            [
+                'company_name' => 'mhammad',
+                'email' => 'mh@gmail.com',
+                'password' => Hash::make('1234567890'),
+                'logo' => 'jdjfhfhfebfjfj.png',
+                'phone_number' => '9123456789'
+            ], [
                 'company_name' => 'leen2',
                 'email' => 'leen2@gmail.com',
                 'password' => Hash::make('1234567890'),
-                'logo'=>'jdjfhfhfebfjfj.png',
-                'Commercial_Record'=>'jjjfdkgkflfe.pdf',
-                'phone_number'=>'8193456789'
+                'logo' => 'jdjfhfhfebfjfj.png',
+                'phone_number' => '8193456789'
             ]
         ]);
         // CREATE CONST COLORS

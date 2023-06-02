@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('password');
             //$table->rememberToken();
             $table->text('logo');
-            $table->text('Commercial_Record');
+            // $table->text('Commercial_Record');
+            $table->string('description')->default('');
             $table->string('phone_number')->unique()->numerical()->min(9)->max(10);
             $table->double('wallet')->default(0.0);
             $table->boolean('state')->default(false);

@@ -12,13 +12,14 @@ use App\Models\Size;
 use App\Models\Tag;
 use App\Models\Variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     //= ADMIN =//
     // add product
-    public function add_product(Request $request)
+    public function add_product(Request $request, $category_id)
     {
         $request->validate(
             [
@@ -31,7 +32,10 @@ class ProductController extends Controller
             ],
             // ['tag.unique' => 'the tag is already exists',]
         );
+        $admin = Auth::guard('admin_api')->user();
         $product = new Product();
+        $product->admin_id = $admin->id;
+        $product->category_id = $request->category_id;
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
@@ -137,6 +141,37 @@ class ProductController extends Controller
         ]);
     }
 
+
+    // add color
+    public function add_color(Request $request)
+    {
+        $request->validate([
+            'color' => 'required',
+            'hex' => 'required',
+        ]);
+        $color = new Color();
+        $color->color = $request->color;
+        $color->hex = $request->hex;
+        $color->save();
+        return response()->json([
+            'status' => 1,
+            'message' => 'Color added successfully'
+        ]);
+    }
+    // add size
+    public function add_size(Request $request)
+    {
+        $request->validate([
+            'size' => 'required',
+        ]);
+        $size = new Size();
+        $size->size = $request->size;
+        $size->save();
+        return response()->json([
+            'status' => 1,
+            'message' => 'size added successfully'
+        ]);
+    }
     // get colors
     public function get_colors()
     {

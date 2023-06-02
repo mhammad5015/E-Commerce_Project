@@ -6,203 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Home",
-			"item": [
-				{
-					"name": "get all users",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/user/get",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"user",
-								"get"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get user with id",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/user/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"user",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_Total_Users",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/user/get_Total_Users",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"user",
-								"get_Total_Users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all admins ",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/get",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"get"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get admin with id",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_Total_Admins",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/get_Total_Admin",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"get_Total_Admin"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_wallet_Admin",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/get_wallet_Admin",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"get_wallet_Admin"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "User",
 			"item": [
 				{
@@ -224,7 +27,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "noor@gmail.com",
+											"value": "le@gmail.com",
 											"type": "text"
 										}
 									]
@@ -359,12 +162,12 @@
 									"formdata": [
 										{
 											"key": "user_name",
-											"value": "mhammad",
+											"value": "leen10",
 											"type": "text"
 										},
 										{
 											"key": "email",
-											"value": "mh5@gmail.com",
+											"value": "le1@gmail.com",
 											"type": "text"
 										},
 										{
@@ -385,7 +188,7 @@
 										{
 											"key": "profile_img_url",
 											"type": "file",
-											"src": "/C:/Users/Leen/Pictures/fe56b048cf22e6dc00123f680a3f0bf2.jpg"
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
 										},
 										{
 											"key": "address",
@@ -429,7 +232,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": " eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTAxODQ3ZDE3OWJiZDg0MzZmNjYxMzJjYzUyOGZmMTc0ZmM5NDAwNTUxNTE2Mjk1MDNjMzU0MGMxNDRmZTE4YmY3MjBhMTVlNzIyNzkwMzYiLCJpYXQiOjE2ODM0NTMzMTcuNzEyNjc2LCJuYmYiOjE2ODM0NTMzMTcuNzEyNjgyLCJleHAiOjE3MTUwNzU3MTcuNjk1NTYsInN1YiI6IjIyIiwic2NvcGVzIjpbInVzZXIiXX0.VvgA4gklqEJTeBM_hFCmv9wGGy1ic9PlwSTV1CMsRF5mqXI6uWelM3T_-yqFxmhR5nrufUbp-MV_AFlqIxQTC6AVHzVnbQm0W4IviZw2DvTJyGLddl5RTzcb7BtfW6bE9xqDZYGGgDRhNM9O0CMaDJUWwupTgvFLSNWuBcwQCK8fmu7qO26uc2PYrnxbvsV73YQk88RV2PDDjku1BoXwXy19pVGEWy74cz5C9BFhlE-dMTxV0mMa95SiZSTZRsw0R_n0SpqSdyQWC05gcgL4O0j4TyLTQmHUOuHBLWEqq8EkEFHgYSPwC1VGCK6wa7oMpN_CvYzDNHKa7F3WwCmJqV6RzVQdGig1yYchzvZNqhi-QGti5Vp2_JPrbncfjlyRjz7iAQm_Gy1MFIImqWMCAZ1Y_laVNUJhP-aDIgQ6kyovjd-UZZMtctjI03fDkrekwxdNuo3OydXSunQ6ZOLtIYrhWKemJonizV2Fmhzf-MN2KhTXaSOPxfdzP3yFdM9W6FrDaNYylGsNRTWA2cPr_1GdDgX-SQO32vRfIi8i_eGveATa8jE_X6xtzhPgHJsToeiC97hVQXsLJp9kYhLsym4wEBzC7EJN_YaB3JG-Z1o3vwPfeM71G_rFogEEKu9zeB7TkJqqNNzYRkZbZklP7d15BgVEMsHqmQUf-Tn1Z_E",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGNiMTcwOWYwN2ZjOTg1MGZhMmY3OGI3NmQyZGViYzAyMTk1ZTkxZjIyNTkwZjliYzBmMjVmNzRhMzM0MzY1NTU3NWFjOWZhYjNjYzdkMTMiLCJpYXQiOjE2ODU2MDcxMzguNDg4NjI1LCJuYmYiOjE2ODU2MDcxMzguNDg4NjMzLCJleHAiOjE3MTcyMjk1MzguMTY0MDAyLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.iI1Hqp7SwDMAeDblXn2V_WgHFkgeW1_xZ_LnHyotRhThZ2Z3n53zAVXGYc-32fBWNlkkI-CbtOVBQ6hv2aFjvkiakK0G-uNqDrJZsJcXscbnpAfr2sPlWExauDRbr6XSmSSN_cyEwvUZwL3VZ6NvUg61VOef0WF0IC4RwsKONazYlmR-gInIaElKYXA96yfiniHN5o2ST9BIBtNaOykyrztYEBvh-HIVenHh9cPh_2xpfo2Ns0IxGY6JqsLlSFJicCjjfQMhD07sh-EF_2EBvESVgoEft2zK2nLCxGptRPBHTeSL_DGx_nHoWkroqm-yuadT_Db1CdwOg5TVI1hC_zeHObcXisyazAai63fBtfwEsnIU5HLYJWKMNPdb-g7cDm2baHAkb_Ssg2iZY_oWO2Gj0INwh_SAUug5EWSx5nWUTobqu4WRxHp9qWGBtYjTijTLrQmbcTw26mOotxdlYnhDREdI3TS1yha8vIbv7RV7vR2vW_v1EwWyiyyck_vaj7EfCm8syNWUGWItUYEB-zBJT7Kqzq0L_FsLPD_GOzn2UlLIXKX4u1ItD3KNYzwcgkUkFgx144MqBazVmHsOtPE9EgRd1b4UY9wuu14awBzslO-723sBlYPG31VN_d-fav7ZoDEv6saq_bm_MH3YHZ7NFAz0YWfBomgeZnbcGgA",
 											"type": "string"
 										}
 									]
@@ -453,7 +256,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "mh5@gmail.com",
+											"value": "mh@gmail.com",
 											"type": "text"
 										},
 										{
@@ -486,7 +289,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTI0ZjViZmMwNzMxYjhhOTM4N2QyYTFkOGM5MGQyMjgzMjk1YjMzMmViMDFmMjQwMmQwZGVkOWY5YzRiMGY5ZGFlNzIxZGYyOWFmOWNiOTAiLCJpYXQiOjE2ODUxMjcwNTQuMjM1NDIzLCJuYmYiOjE2ODUxMjcwNTQuMjM1NDI4LCJleHAiOjE3MTY3NDk0NTQuMjIyNTksInN1YiI6IjIiLCJzY29wZXMiOlsidXNlciJdfQ.Yr3s4l9ZYJghSly5cm_-bAqkmPuOKS4llrOu8i1uV6Z9MPam9BqonoYqu2oMa6-ErX65niOYmWAEfpL3Cxdr3tE7bf9if_EX2_JOxN4rRYXSXq8dZkU9_wGEtGT7OaG7mFm86M-0eRAZf3vpqLAC_rgmrNKBA8aQNFVFSJ2ntbI6xO7W5Dt-JCxXFyl5ApfTIGPczFJTc_gprdXKznZgszE39AtNgybN-seNYIblfaq3MHATlRpqpR4sN96w5h66AkLG4yHIj8Eubu-OhrD4J-D4SXFWpEU-hyqgYHAdlAZGuwt8VMFHnRsWvqgoBGtymgu_pyAWtOzG39vWJUyAIp_9Z7bGqdcF1c1dbVpVAMGpF_AVsOZYh_1wLnU66Gow6wUliZUxqMfWrHmQFiELN4xBy_UqKtlZ1-RmRY2OwWCjuF4vTWIu6ihWk1fFn3n5nqfSjH1_3rpVIGZGCKSKCloAlXMcR_NK-w88BX_MzW007ZZqbkRgGAwvfvP7zDEb_uJWoRRoTaxrlkk3YTJIXWYVXrywB7zn-52GuHHu_0gsggtyQHYDNMq5eG2lZuWjOM3ddKp1VzRUevYy4_oqZDHojOIsL9j0NQqOPAJpgtgKxsbraqclVaBy9wtNe53UjNIdNURrk8yLAyWR8wK0ZEp6xY5TLJ-AcUuhYjUxHyg",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTdjYzNlNWY0NjlhNThkNGI2YzM1ZjM0NzFjODY1MDNhMTFmYWYyNDM2MjQwN2Q5OTFkNDhjM2Y4YWU0NTdlYzc4ZThhM2Y5OGJmZGVjZmEiLCJpYXQiOjE2ODU2MTU0MjIuODA0Mzg3LCJuYmYiOjE2ODU2MTU0MjIuODA0Mzk4LCJleHAiOjE3MTcyMzc4MjIuNjE1NDY3LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.kY9iV44Gvv827HyeuC89GJ3OGxLr27BJ03wL_XkxfozclJd86k2HGZ47AWcNQA9v-5-4a2Nl_lVpUXxIN-88zIDLr3WI0S6bX8ZFJ7uJenHDkeL4McHWmVb2PLOlFXqZ07Fo-mpf5vciAJBDqlP13mzgIVLqyQ_PmPXjgy0s0rj3Pe5BnwCUTTACuZzSRjDAPmHJ5ujpUjj1WFwTUGiLVJyZLnCPn9kN_u5GTvVsk5iqNfvELz27NInLzUPguYR7HDo_radr-OEw3B2Hd1J-eVdFTtE7dhr_63OzYarnp2fmDydm4ZOXjq2GR5hPo5pWm5kTssxgGRkkluC8EAOm56o9lsgLjJDUOgAPBhVp1WPMt0YKeGvxAEPWEuP3uS0dCNizYjKv-qCl5MgZAaicMnws0xBz7i0DFw30isSL7iOpqbSDyTIKbNoD2QQ5HOJqJSy7U8AYMP8o6NXPYC6ulAyjFlogRyS-U3cns0quQfF_0XSacZBhq2l29niDqvcBQ9jZTau3_DeFseirpmUh77MUoGu5rBmqwuqvxBr9JG1n21dH-QiWvbULrQ0aCkTH_bkQpy9yRNJ2gYEtcUMgIEYvZUyZneklUr6FnLkBQfYNb-F33XXkmjjoSs_I47B_o_ZAU9TeYpeGPOZ3jxWTf7PggDGVPhIpnKqH2CN20Po",
 											"type": "string"
 										}
 									]
@@ -519,6 +322,46 @@
 			]
 		},
 		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "dashboard_login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mh@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/api/dashboard/dashboard_login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"dashboard",
+								"dashboard_login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Super Admin",
 			"item": [
 				{
@@ -532,7 +375,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjNiOTU2M2RmM2E1ODM5Yjk0YzYwMGZjZGU3ZDYwOWJmM2MyYmM1NzEzMmM1ZGFkOGFlYzNkNGU2YmRlMmU2MDk0Njc5MmVjY2I5ZDIzNDMiLCJpYXQiOjE2ODQ0OTU0NzcuMjU1MTUyLCJuYmYiOjE2ODQ0OTU0NzcuMjU1MTU2LCJleHAiOjE3MTYxMTc4NzcuMTk1NTU4LCJzdWIiOiIxIiwic2NvcGVzIjpbInN1cGVyX2FkbWluIl19.cZfkFbljY3RTZeClaXOgeVR0m97xIg2SEINhkVgU0XQ1pp2QCe5JlEEs0v031I0KEDr9P0HtO-kD4nYOjUGsaQvCvizNY_uSJx2hx-ERHr01BTIkexG2b0xI55SP1IzwhKImZCqkYNhYHIte7M14NuRxfLCDHQp-Vz0oBkae5f_-JTXSh0VOPDotT-NXUjh51exMA7vhTzzj6AmfzAzVTQ_WwoETpCpWcB6593rLehXeOQDEH3lHMyWvrKEAcS4-v8dMGM0SUS6PyQYiVug_2C3YIhgFxXbNzPAAsalTNPR9IZONIyVdltPeZg98I1hmtVbMCFJ_1AA2BsdC6HxLO8-_7cNdGppkoTDTAA50LknngMjdBWoEdKFShV_KSpH9CimH7dZrEcsB0NiP4KvVB7WhL_73X0Db8M6Tl_RkL5cxHc7hyLh0HqQlYMjF2Er4dDBzWuUqq7SJaRcg8dNvVVntuG9ICLuDfWjH_Y4U3blRgjSklOnAZH6h1Nvqy7Kczd5YCpUb7tLjsQtRtVXBooATTyUQ3X2qdG5zXKDgY6Un1mrNUoMghyYpzBQfnaAe8i55m_F-keOfECMb53hJIkWT9xUhUx8Poyi3yqED6n2YC8Q0wOBjdF_DHt_CEN9csJuLFf5R2DBN0Xt6rnPKHq3hBNPpRXi_Dt-zLE2-HO8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2RhY2ZmY2VlZGRhMDk4MjZmN2ZmNzUxZDkwZjc0MjAzYmFkYjkxZTBhYmRlMTY1Nzk4Nzk0MmVmZmRhNzMzZDlkNzBhYjYzYzIzMTRjYzAiLCJpYXQiOjE2ODU2MTU3MTQuNzM3MTUyLCJuYmYiOjE2ODU2MTU3MTQuNzM3MTYsImV4cCI6MTcxNzIzODExNC42Nzg4Niwic3ViIjoiMSIsInNjb3BlcyI6WyJzdXBlcl9hZG1pbiJdfQ.Oxj8qOf7yQOL2rHSlHJBKgHLNCCYIFmCWWhT_7zHi0cuz_4Egx4xVNk7WsgSTVrKIhyDn5Ul_7kgtkxhTfc3p9QRlg0dkiLbglrEcyfGXZZIGgu2vro4Nc_HaRUVs4kwWMHEXQiiF4rDRajF-hh8oVCYoz7HysoKBU9kxEgF7lcTqLgfW8U2sPw9tnSwl7HFx2BYdJSN4PqK6kPfG9bj7Cyd1R948dHzI1iL8TSn2Ank8j7d46HNnl2aBxqINWOwSN50dDgElKZjY2-v-brrl4BPEgK5dNbuYNz3-mfeaRk4ib9hpvaCb-zv8PJrj8HwC5gvPwvMfqc59A04Z0JoM2HzbS4-g9pOqWxeA-nHkfKNvo-X3k6MxwfZyzunBYfvFw1P_gdpfmrxNKROrUpy5NZ2bChhiz_qMD00z7tov8nEQsQ_G2WQQxzJXMowqYl8KBzesGclHCQDnG_tuYW1ErDEvAsw_-yYha4bSUO4lr31RvJ5DeP5WKJfZTcwIZvV2jig6NRGIHVNTHiwFO2tkDUxdJbZdJWfwPR3bCQGdcjI4e0L33dNrxBUHjwFC3zd8U9b-oFfVecRPu18mBVDN_x0ZbWwOpDp4PDX6jYTsZmeLncnHUkVLJLYzsb5MWJnAEdKiyvNbDo4UW65zZfKQpBTFMXoCuq-mTM2Eu0W1Qs",
 											"type": "string"
 										}
 									]
@@ -593,7 +436,7 @@
 								},
 								{
 									"key": "email",
-									"value": "ad@gmail.com",
+									"value": "sda@gmail.com",
 									"type": "default"
 								},
 								{
@@ -608,13 +451,13 @@
 								},
 								{
 									"key": "phone_number",
-									"value": "0987675641",
+									"value": "0987675642",
 									"type": "default"
 								},
 								{
 									"key": "logo",
 									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/dissconnectedwallpaper.jpg"
 								},
 								{
 									"key": "Commercial_Record",
@@ -629,6 +472,11 @@
 								{
 									"key": "address[]",
 									"value": "address2",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "this is description",
 									"type": "default"
 								}
 							]
@@ -702,17 +550,17 @@
 			]
 		},
 		{
-			"name": "Dashboard",
+			"name": "Home",
 			"item": [
 				{
-					"name": "dashboard_login",
+					"name": "get all users",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "default"
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
@@ -720,20 +568,177 @@
 								"type": "default"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"mh@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}"
-						},
 						"url": {
-							"raw": "localhost:8000/api/dashboard/dashboard_login",
+							"raw": "localhost:8000/api/user/get",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"api",
-								"dashboard",
-								"dashboard_login"
+								"user",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user with id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users Count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/user/usersCount",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"usersCount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all admins ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/get",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get admin with id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admins Count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/adminsCount",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"adminsCount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Admin Wallet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/getAdminWallet",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"getAdminWallet"
 							]
 						}
 					},
@@ -747,6 +752,16 @@
 				{
 					"name": "add_product",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzA5MmZiYTZkYTI5MjJjNDEyNDM0NTlhOTY0ZGNiYWZmODRiY2MxNWU2NDY3MDgwNjMzNjQ5NTc2OGU5N2Q2OWQ3ZjBlYTcxMTNkOWU4YWYiLCJpYXQiOjE2ODU2MTc4MzYuNzQ0NTIsIm5iZiI6MTY4NTYxNzgzNi43NDQ1MjcsImV4cCI6MTcxNzI0MDIzNi42NjA5ODEsInN1YiI6IjEiLCJzY29wZXMiOlsiYWRtaW4iXX0.RaV2Z5m57KOTPyE1SG4Kptx9EOZsbYtHz1p4Q2NJCGkN38pVQ_uEFw4c3KbuoUw_YM3qAV2k7WJRFO443aQZgysHFkkGgl0w8dQTFhe_NRqV8Ak9Oga2IgIF__oTJiB40KOENaS7AVtHny9mmkKbujsfTsYZUTJupWw_tn7qbgtjPT0o6PvzKK1xOFd73QPkvUsaJAhbNjJ3nrSY7QvSwj86vLG1YOvAEFvS23qAMDxmKgrDbumGjLNQxiu2MpUQ6-Xms0hnAZfhK-w33SReH21LjVBSf9d1RjWl9fzFuK9JevBzoywQgxs7GSRgakKpVkA5c9MEJP8hzlotSvBWMBoIlMpPXQqJNWaki1rhSZukvRYpX02BIx-qjnQvEMemMIJHjfCOrD3XoxMLPfGG-ZyF_MrCaY-1fHdzNDrAhQx0gfJ5u9vmoLXxhqo_DIexpUBVhGi0wpoMZu9NQTfqeIN-gno-px6lQSSpZsxS56Rq_xZHwvc3xVjPBSrHqjJNWEbozqXI_1yQMwH8O7gq7RqmpmgPcknupAthC6h5WfsBS1RTHN7K3cN-vVK-yO_6BswvVwzFQ48WEEz0zSNwN4pTTpQu2EigQUQFe2ZR0Ggtz79xvC7K6mljtoQT3ppKt5dHVLnHuwBjyChzKTi6ZCdj_rZdDf7psvJZ-U5Rpq4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -809,7 +824,7 @@
 								{
 									"key": "product_image[]",
 									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/Modern-Minimalist-Scorpion-Logo.png"
 								},
 								{
 									"key": "variants[0][color_id]",
@@ -844,7 +859,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:8000/api/product/add_product",
+							"raw": "localhost:8000/api/product/add_product/1",
 							"host": [
 								"localhost"
 							],
@@ -852,7 +867,8 @@
 							"path": [
 								"api",
 								"product",
-								"add_product"
+								"add_product",
+								"1"
 							]
 						}
 					},
@@ -875,7 +891,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/product/delete_product/1",
+							"raw": "localhost:8000/api/product/delete_product/2",
 							"host": [
 								"localhost"
 							],
@@ -884,7 +900,7 @@
 								"api",
 								"product",
 								"delete_product",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -908,7 +924,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"product_id\":2,\r\n    \"approved\":false\r\n}"
+							"raw": "{\r\n    \"product_id\":3,\r\n    \"approved\":true\r\n}"
 						},
 						"url": {
 							"raw": "localhost:8000/api/product/aprove_product",
@@ -1110,7 +1126,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "clothes_male",
+									"value": "22",
 									"type": "text"
 								},
 								{
@@ -1120,7 +1136,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "1",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -1178,7 +1194,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/super_admin/delete_category/8",
+							"raw": "localhost:8000/api/super_admin/delete_category/1",
 							"host": [
 								"localhost"
 							],
@@ -1187,7 +1203,7 @@
 								"api",
 								"super_admin",
 								"delete_category",
-								"8"
+								"1"
 							]
 						}
 					},
@@ -1209,23 +1225,23 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "clothes_male_jacket",
+									"value": "clothes_male_jass",
 									"type": "text"
 								},
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leen/Pictures/flower.bmp"
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
 								},
 								{
 									"key": "parent_id",
-									"value": "4",
+									"value": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:8000/api/super_admin/edit_category/7",
+							"raw": "localhost:8000/api/super_admin/edit_category/1",
 							"host": [
 								"localhost"
 							],
@@ -1234,33 +1250,6 @@
 								"api",
 								"super_admin",
 								"edit_category",
-								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_category_withProduct For Admin",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/get_category_product/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"get_category_product",
 								"1"
 							]
 						}
@@ -1271,9 +1260,20 @@
 					"name": "get TREE of category for admin with products",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
 						"url": {
-							"raw": "localhost:8000/api/admin/get_Fullcategory_product/1",
+							"raw": "localhost:8000/api/admin/get_category_productForAdmin/1",
 							"host": [
 								"localhost"
 							],
@@ -1281,8 +1281,107 @@
 							"path": [
 								"api",
 								"admin",
-								"get_Fullcategory_product",
+								"get_category_productForAdmin",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADS",
+			"item": [
+				{
+					"name": "add ADS",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "admin_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Leen/Pictures/fe56b048cf22e6dc00123f680a3f0bf2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/super_admin/create_ads",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"create_ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete ADS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/super_admin/delete_ads/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"delete_ads",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all ads with admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/super_admin/get_ads",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"get_ads"
 							]
 						}
 					},

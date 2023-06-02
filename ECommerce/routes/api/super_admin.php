@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\CategoryController;
-
+use App\Http\Controllers\api\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ use App\Http\Controllers\api\CategoryController;
 |
 */
 
-Route::group(['prefix' => 'super_admin', 'middleware' => ['auth:admin_api', 'scopes:super_admin']], function () {
+Route::group(['prefix' => 'super_admin', 'middleware' => ['auth:super_admin_api', 'scopes:super_admin']], function () {
     Route::post('logout', [AuthController::class, 'super_adminLogout']);
 });
 
@@ -28,4 +28,7 @@ Route::post('super_admin/create_category',[CategoryController::class, 'store']);
 Route::get('super_admin/get_category',[CategoryController::class, 'index']);
 Route::delete('super_admin/delete_category/{id}',[CategoryController::class, 'delete']);
 Route::post('super_admin/edit_category/{id}',[CategoryController::class, 'update']);
-
+// ads
+Route::post('super_admin/create_ads',[HomeController::class, 'store_ad']);
+Route::delete('super_admin/delete_ads/{id}',[HomeController::class, 'delete_ads']);
+Route::get('super_admin/get_ads',[HomeController::class, 'get_ads']);

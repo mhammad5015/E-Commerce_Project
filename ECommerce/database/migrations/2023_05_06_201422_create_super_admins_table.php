@@ -17,11 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('superadmin_name');
             $table->string('email')->unique();
-            //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             //$table->rememberToken();
-            //$table->text('profile_img_url')->nullable();
-            //$table->string('phone_number')->unique()->numerical()->min(9)->max(10);
             $table->double('wallet')->default(0.0);
         });
     }

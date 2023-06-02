@@ -29,5 +29,5 @@ Route::post('user/code/check', [AuthController::class, 'checkCode']);
 Route::post('user/password/reset', [AuthController::class, 'userResetPassword']);
 
 Route::get('user/get', [HomeController::class, 'getUsers']);
-Route::post('user/{id}', [HomeController::class, 'getUser_details']);
-Route::get('user/get_Total_Users', [HomeController::class, 'get_Total_Users']);
+Route::post('user/{id}', [HomeController::class, 'userProfile']);
+Route::get('user/usersCount', [HomeController::class, 'usersCount']);
