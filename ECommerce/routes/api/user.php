@@ -31,3 +31,17 @@ Route::post('user/password/reset', [AuthController::class, 'userResetPassword'])
 Route::get('user/get', [HomeController::class, 'getUsers']);
 Route::post('user/{id}', [HomeController::class, 'userProfile']);
 Route::get('user/usersCount', [HomeController::class, 'usersCount']);
+
+// Favorites
+Route::post('user/add_to_favorites/{product_id}', [HomeController::class, 'add_to_favorites']);
+Route::delete('user/remove_from_favorites/{product_id}', [HomeController::class, 'remove_from_favorites']);
+Route::get('user/get_all_favorites', [HomeController::class, 'get_all_favorites']);
+
+// Rates
+Route::post('user/add_rate/{product_id}', [HomeController::class, 'add_rate']);
+Route::get('user/show_rate/{product_id}', [HomeController::class, 'show_rate']);
+
+// Comments
+Route::post('user/add_comment/{product_id}', [HomeController::class, 'add_comment']);
+Route::get('user/get_product_comments/{product_id}', [HomeController::class, 'get_product_comments']);
+Route::delete('user/delete_comment/{comment_id}', [HomeController::class, 'delete_comment']);

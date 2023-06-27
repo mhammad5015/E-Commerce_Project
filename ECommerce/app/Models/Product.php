@@ -32,5 +32,10 @@ class Product extends Model
         return $this->hasMany(Variant::class);
     }
 
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
+
 
 }

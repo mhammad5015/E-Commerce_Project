@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'mhammad@gmail.com',
             'password' => Hash::make('1234567890'),
         ]);
+        // CREATE A ADMINs ACOUNT
         DB::table('admins')->insert([
             [
                 'company_name' => 'mhammad',
@@ -32,8 +33,8 @@ class DatabaseSeeder extends Seeder
                 'logo' => 'jdjfhfhfebfjfj.png',
                 'phone_number' => '9123456789'
             ], [
-                'company_name' => 'leen2',
-                'email' => 'leen2@gmail.com',
+                'company_name' => 'leen',
+                'email' => 'le@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
                 'phone_number' => '8193456789'
