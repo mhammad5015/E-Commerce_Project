@@ -162,12 +162,12 @@
 									"formdata": [
 										{
 											"key": "user_name",
-											"value": "leen10",
+											"value": "leen",
 											"type": "text"
 										},
 										{
 											"key": "email",
-											"value": "le1@gmail.com",
+											"value": "le@gmail.com",
 											"type": "text"
 										},
 										{
@@ -182,13 +182,13 @@
 										},
 										{
 											"key": "phone_number",
-											"value": "8682510011",
+											"value": "8682510012",
 											"type": "text"
 										},
 										{
 											"key": "profile_img_url",
 											"type": "file",
-											"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/wallpaper 1.png"
 										},
 										{
 											"key": "address",
@@ -256,7 +256,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "mh@gmail.com",
+											"value": "le@gmail.com",
 											"type": "text"
 										},
 										{
@@ -342,7 +342,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"mh@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}"
+							"raw": "{\r\n    \"email\": \"mhammad@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}"
 						},
 						"url": {
 							"raw": "localhost:8000/api/dashboard/dashboard_login",
@@ -747,6 +747,224 @@
 			]
 		},
 		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "cloth",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Leen/Downloads/Model databases - Page 1 (2).png"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/super_admin/create_category",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"create_category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/super_admin/get_category",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"get_category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/super_admin/delete_category/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"delete_category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "clothes_male_jass",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/super_admin/edit_category/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"edit_category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get TREE of category for admin with products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/get_category_productForAdmin/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"get_category_productForAdmin",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_categories_with_produts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/get_all_categories_with_produts",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"get_all_categories_with_produts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Product",
 			"item": [
 				{
@@ -757,7 +975,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzA5MmZiYTZkYTI5MjJjNDEyNDM0NTlhOTY0ZGNiYWZmODRiY2MxNWU2NDY3MDgwNjMzNjQ5NTc2OGU5N2Q2OWQ3ZjBlYTcxMTNkOWU4YWYiLCJpYXQiOjE2ODU2MTc4MzYuNzQ0NTIsIm5iZiI6MTY4NTYxNzgzNi43NDQ1MjcsImV4cCI6MTcxNzI0MDIzNi42NjA5ODEsInN1YiI6IjEiLCJzY29wZXMiOlsiYWRtaW4iXX0.RaV2Z5m57KOTPyE1SG4Kptx9EOZsbYtHz1p4Q2NJCGkN38pVQ_uEFw4c3KbuoUw_YM3qAV2k7WJRFO443aQZgysHFkkGgl0w8dQTFhe_NRqV8Ak9Oga2IgIF__oTJiB40KOENaS7AVtHny9mmkKbujsfTsYZUTJupWw_tn7qbgtjPT0o6PvzKK1xOFd73QPkvUsaJAhbNjJ3nrSY7QvSwj86vLG1YOvAEFvS23qAMDxmKgrDbumGjLNQxiu2MpUQ6-Xms0hnAZfhK-w33SReH21LjVBSf9d1RjWl9fzFuK9JevBzoywQgxs7GSRgakKpVkA5c9MEJP8hzlotSvBWMBoIlMpPXQqJNWaki1rhSZukvRYpX02BIx-qjnQvEMemMIJHjfCOrD3XoxMLPfGG-ZyF_MrCaY-1fHdzNDrAhQx0gfJ5u9vmoLXxhqo_DIexpUBVhGi0wpoMZu9NQTfqeIN-gno-px6lQSSpZsxS56Rq_xZHwvc3xVjPBSrHqjJNWEbozqXI_1yQMwH8O7gq7RqmpmgPcknupAthC6h5WfsBS1RTHN7K3cN-vVK-yO_6BswvVwzFQ48WEEz0zSNwN4pTTpQu2EigQUQFe2ZR0Ggtz79xvC7K6mljtoQT3ppKt5dHVLnHuwBjyChzKTi6ZCdj_rZdDf7psvJZ-U5Rpq4",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDJjOGE1NzZhZjc0NTEwNzFmMDgwOTZhYWEwNGI4NjU4MjM0N2UyZjFiZWY5YWJlYTY1ZDFjNzBlMmYzMDM1MmZmOTllYmY0ZWE5MTYyYjciLCJpYXQiOjE2ODkzMjgwNDMuMTkyMDkyLCJuYmYiOjE2ODkzMjgwNDMuMTkyMTA0LCJleHAiOjE3MjA5NTA0NDMuMTAxNTY0LCJzdWIiOiIxIiwic2NvcGVzIjpbInN1cGVyX2FkbWluIl19.M8Kx5pIrFSgXGwXMSsFULypruQ0glnn-9z0iBEZjfd5VcH-tBIUFRrVPNXx-F0eyKouq2Ln2nXAByszytJITrf5e0mnxlC_USoEoeq6axBS8NvzBcHoUuPl1LOsjONGzUykk0Hm-yzTZUidQSBJJJ3ju2oZy4VkO8gITuyrIJFrKwWDmB9Xj8DjnRE4NG4ecd7ZofGX6b4rpLi3nuaUy2mXltFGv338iqC_40hUMCx4H-gDma8mKCfdzLsOio71crwFcxOpuPgTZPuERTGA2iXr_KIazuMR-AInblOiwkgSPJv5qbLamvNK8ooAOg-oveZ9ownhZQzo1fhbH3FabWRP22tzQRHHhSF44QHxe678ddA9hT7--YWP4kmS53BhKJhXlFp-DqDaCU74O8ZY5oxcsj2QR4v9nQL7L4RAPoytnBBdL63LHyYWw37k385kugZsFzxtqAJq6QazqjircVjuvqMYUn61do9DpN8hvmXG9b8ZOaovS-hN3vQPIBFjPcW33ZXQeXmvIBvNMI5Hds8BSc7VsOETvUHEWWtA6faA4HtP8kqAiS5D6CrNqSnBITzRe1gp6N3MyV0urwWlQE1I-c_iNYMjdHM6s0Zxhp1zLn6_fwdAmsMgj7XI_vIPpTdsJxaF991DqaZBNu7bZgsWnJKJ_LC9HwajN8fq8Ud4",
 									"type": "string"
 								}
 							]
@@ -801,20 +1019,17 @@
 								{
 									"key": "tag[]",
 									"value": "fire Tshirt1",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "tag[]",
-									"value": "music Tshirt1",
-									"type": "default",
-									"disabled": true
+									"value": "cut Tshirt1",
+									"type": "default"
 								},
 								{
 									"key": "tag[]",
 									"value": "tag Tshirt1",
-									"type": "default",
-									"disabled": true
+									"type": "default"
 								},
 								{
 									"key": "product_image[]",
@@ -891,7 +1106,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/product/delete_product/2",
+							"raw": "localhost:8000/api/product/delete_product/7",
 							"host": [
 								"localhost"
 							],
@@ -900,7 +1115,7 @@
 								"api",
 								"product",
 								"delete_product",
-								"2"
+								"7"
 							]
 						}
 					},
@@ -1036,6 +1251,130 @@
 					"response": []
 				},
 				{
+					"name": "add_tag",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tag",
+									"value": "fire Tshirt",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product/add_tag/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"add_tag",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_color",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\":\"blueee\",\r\n    \"hex\":\"#fff000\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product/add_color",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"add_color"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_size",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"size\":\"XXXXXL\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product/add_size",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"add_size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get_colors",
 					"request": {
 						"method": "GET",
@@ -1100,189 +1439,6 @@
 								"api",
 								"product",
 								"get_sizes"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Category",
-			"item": [
-				{
-					"name": "create category",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/Leen/Downloads/Model databases - Page 1 (2).png"
-								},
-								{
-									"key": "parent_id",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:8000/api/super_admin/create_category",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"super_admin",
-								"create_category"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get category",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/super_admin/get_category",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"super_admin",
-								"get_category"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete category",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/super_admin/delete_category/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"super_admin",
-								"delete_category",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit category",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "clothes_male_jass",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
-								},
-								{
-									"key": "parent_id",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:8000/api/super_admin/edit_category/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"super_admin",
-								"edit_category",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get TREE of category for admin with products",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/get_category_productForAdmin/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"get_category_productForAdmin",
-								"1"
 							]
 						}
 					},
@@ -1382,6 +1538,356 @@
 								"api",
 								"super_admin",
 								"get_ads"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "add_to_favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTcxMjRlZjljYTg5NDQzNzYxMjNlNDFhNjgyZjk0NDcwYTcyMDkyODcwNjhhN2QyMjRkNjA0YzQ2ZTk5MWExZGFjMjhmOGMxMWZjMzdlMjQiLCJpYXQiOjE2ODU3Mjc0MDAuNTE2NSwibmJmIjoxNjg1NzI3NDAwLjUxNjUxMSwiZXhwIjoxNzE3MzQ5ODAwLjQ0Mjg0Nywic3ViIjoiMSIsInNjb3BlcyI6WyJ1c2VyIl19.jt8i_I2h9zbPSCo9H_eyVuLwV22kwAeMWhkAHD9l2QKpxk5xzlwW92H0wjoAWQeS1c-Wv2J2yFlWayHXX7o4EkQtOoROid3uAi_jxOd14GzbVYg6kl9KADdF-lfJf-QN5EBusv7YM_gvOSBfS_mgchCdaXaFe34ScwAbRT5MRsHvzuJQt4RNGbYLx3b8iKvXWNDq3PlQl1K95tgv4cChX6GemTh8gUYRgTNofyy6a3Ho7dWKiLnH0PizpeZcpwL43D4Y8uZbq5nM5RSEC5l2LxKXxu7oo3xISNjz8P8PgFstbeWm9VcKZkwuYtLlFFF9KeP4Q8NPnRgR-QBE6onmcBwE5dvsGsZx8QyOxbx58GxMnBuJrw1vjgp4JKHxrnMCQhM7ter4QkJINXmxkf1rGnSX0JE80RvUEJHkQrTadx9eg8YMkVCCUwE74nsV2EKNeeocY0sTU4kMIc1xVBzvytSbvdmzPbdqGGd9na-L8lX79UwGwChV4YDpwsOzehTTbVl4Yqad_XoK0fF56L_Yf1YUk94fqxdBKCVd2cl28RVk71mQUMKsEnNflOBb0ZkJMwY_HCZlueoBDhVndCWdXhF-BGMETRt5rFmBX3SDz9SmDDh7xo2V-xve-yk8p_HPoBwXTPHRkT8Tvr30MSu6D2SiSsgbzJlCiQ8BxHjzuZU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/add_to_favorites/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"add_to_favorites",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove_from_favorites",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/remove_from_favorites/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"remove_from_favorites",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_favorites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/get_all_favorites",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"get_all_favorites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rate",
+			"item": [
+				{
+					"name": "add_rate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODE3YjQ1MDk2M2RhYzc0MGQxNTEzM2Y3YTRlNWY0MjM3NDgzZGNhNjMxNTEzNWE1MmU1NTc5ZDcyZDIzOTNkN2JkZmM5ZTQyZDY3ZTlhY2YiLCJpYXQiOjE2ODU3Mzk5NzMuNjExMjMzLCJuYmYiOjE2ODU3Mzk5NzMuNjExMjU4LCJleHAiOjE3MTczNjIzNzMuNDE4ODI0LCJzdWIiOiIyIiwic2NvcGVzIjpbInVzZXIiXX0.WgfgR29T7uumX_tdUN1WDDvYpxEG_QXfJUww5zevqs265w5W5Z4GFzSbRhlxV1SZ-Gar1zcp_brSoswo6Qhax0LadVWzdyiYefYPuGzFes68nHITvMMSGjou7LKDRZfnmJOrTc5IwW-8y96cbsqGgwQLHoZ9K7WOE33Bncj2G3EMrxrUkm4RtIUP3b52vQlUn8MocymtShEc8lrfRcvtkn6ayrN6gWo7VVuXTweAgThAUPiCAW_WbXO9cgGj2MkB--GLZ59psb9RbPYOoTsBl-wL42r0q-CeA0H02-EzMgNE45q0ODqQGHvntDuYpEmYDCwCTTbAjEjUx68LlLf6ZtzXpozSPnBWwsEpi_qMEF019kxyxsidJrhr6tR4GXw_0EsjDmPbe_GdaA3aP8tkN97hgASEy5Ug7Oiw2lYMc24KzfIfWD0LwfBLL32jv6EDItNKTOk11HI1P_RHsDn_QDwnOq4bEHw0KEzpqcXyfRq8NtrzQA-Wd2a2vAPISnQsJ8Kj02FYj9sikkFtUZHi551L3Brewn0X0Uu68SdYyVA_trM69jGRt98UQyMxzRV991FChyQ1gNeUWdurqYjGO9zAgeZ8g21A06KkKyRI-kv1rh88iLbPWequNlXbn0Wxbr7dEdj6BfSnXnlWMkVoepVawLSGl7Ko4vgppKn1H7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\":3\r\n}\r\n// needs user authentication"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/add_rate/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"add_rate",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_rate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/show_rate/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"show_rate",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "add_comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ3ZTU4MWNlODUxYzgyYWNhYTJlMjAzY2Y5OTYzZmMwYzljMTFjYThlOWVjZmMzMzkzMWU3ODIxNGRiMDFiZmJjOWE5ZGFjMWJjNTc4NDciLCJpYXQiOjE2ODU3NDI2NzIuMTUzMzMxLCJuYmYiOjE2ODU3NDI2NzIuMTUzMzM5LCJleHAiOjE3MTczNjUwNzIuMDM0NjI2LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.TT8M0GTkKDhMw8dkzPa4W4BfH2F4I1uxc3Vve4meqT_RK3BPp7N1P5f9ZFKmOaQO9BBk4VELUHBiyWkxf67HKyeFTuv7liLftYywHpCfDni0mtvdZelkSszMRqTH96Sxk2wQAYfmslA9eisKANJdvlnxVamguT4Ph5Vz7ANj_v_-CMrDud131p_VQ7PV2SO2am1yYd96fS9MYe_S9N3l-2zaUCAWPQ_KeisxIOd8BQSWanoZnEvxVsh_rlFIDsuHTjSxX_LBtJ7fnrzdFtCpTA5_jWQVe-4WEu45KrQQ28heq_NzWAgVnj5zkoiZl8RD34ienys96wvWMNJ6oJVr4vFx8-JmvjzINeegVJV5z3Ac5i81_a00-U7of_yV_aGlnhIENz47SosUQVxDSO_Ox_8G9SIwSmxGC-tR9PSP3ekwtq3r1XrSYt73WdoBlWCib8M_0Tuypaf7CL5H0e6FyUj_qn59dTfCh7qb9gNQyVTLiCv9Vz3GQk-wDDWBp17RasiobURRETOx4WxvrXdu0_68Xmu97e1hjIHdXhAaiNNRkcQdtHJF728lG0TxYVqWCNDshMr3cjw-qQ36oDvbR1OJLqyann62eELX-vVz8Tci30HHN1vT2eMRh5nHih6D8g3RT8Ij4CNYzSHUqOAiXziGXizRfGuKAW2bLcXBbLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"this is comment\"\r\n}\r\n// needs user authentication"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/add_comment/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"add_comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/delete_comment/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"delete_comment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_product_comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/get_product_comments/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"get_product_comments",
+								"1"
 							]
 						}
 					},

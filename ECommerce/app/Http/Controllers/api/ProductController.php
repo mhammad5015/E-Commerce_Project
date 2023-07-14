@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ProductController extends Controller
 {
     //= ADMIN =//
@@ -27,7 +29,7 @@ class ProductController extends Controller
                 'price' => 'required',
                 'description',
                 'product_image.*' => 'required|image|mimes:jpeg,png,gif,bmp,jpg,svg',
-                // 'tag' => 'unique:tags',
+                'tag' => 'array',
                 'variants' => 'required|array'
             ],
             // ['tag.unique' => 'the tag is already exists',]
@@ -44,24 +46,46 @@ class ProductController extends Controller
         $pendingProduct = new PendingProduct();
         $pendingProduct->product_id = $product->id;
         $pendingProduct->save();
-
+        // inserting images
         foreach ($request->product_image as $image) {
             $product_image = new Product_image();
             $product_image->product_id = $product->id;
             $product_image->product_image = 'storage/' . $image->store('images', 'public');
             $product_image->save();
         }
-        // if (isset($request->tag)) {
-        //     foreach ($request->tag as $ta) {
-        //         $tag = new Tag();
-        //         $tag->tag = $ta;
-        //         $tag->save();
-        //         $product_tag = new Product_tag();
-        //         $product_tag->product_id = $product->id;
-        //         $product_tag->tag_id = $tag->id;
-        //         $product_tag->save();
-        //     }
-        // }
+        // inserting tags
+        if (isset($request->tag)) {
+            foreach ($request->tag as $ta) {
+                $exists = Tag::where('tag', $ta)->exists();
+                if ($exists) {
+                    $tag = Tag::where('tag', $ta)->first();
+                    $product_tag_exists = Product_tag::where([
+                        'product_id' => $product->id,
+                        'tag_id' => $tag->id,
+                    ])->exists();
+                    if ($product_tag_exists) {
+                        return response()->json([
+                            'status' => 0,
+                            'message' => "the product already associated with the tag ($ta). please do not duplicate the tags ",
+                        ]);
+                    }
+                    $product_tag = new Product_tag();
+                    $product_tag->product_id = $product->id;
+                    $product_tag->tag_id = $tag->id;
+                    $product_tag->save();
+                }
+                if (!$exists) {
+                    $tag = new Tag();
+                    $tag->tag = $ta;
+                    $tag->save();
+                    $product_tag = new Product_tag();
+                    $product_tag->product_id = $product->id;
+                    $product_tag->tag_id = $tag->id;
+                    $product_tag->save();
+                }
+            }
+        }
+        // inserting variants
         foreach ($request->variants as $variant1) {
             $variant = new Variant();
             $variant->product_id = $product->id;
@@ -72,10 +96,52 @@ class ProductController extends Controller
             $product->save();
             $variant->save();
         }
+        // sensing response
         $data = Product::with('productImages', 'productTags', 'productVariants')->find($product->id);
         return response()->json([
             'status' => true,
             'product_data' => $data,
+        ]);
+    }
+
+    // add tag
+    public function add_tag(Request $request, $product_id)
+    {
+        $request->validate([
+            'tag' => 'required',
+        ]);
+        $exists = Tag::where('tag', $request->tag)->exists();
+        if ($exists) {
+            $tag = Tag::where('tag', $request->tag)->first();
+            $product_tag_exists = Product_tag::where([
+                'product_id' => $product_id,
+                'tag_id' => $tag->id,
+            ])->exists();
+            if ($product_tag_exists) {
+                return response()->json([
+                    'status' => 0,
+                    'message' => "the product already associated with the tag ($request->tag).",
+                ]);
+            }
+            $product_tag = new Product_tag();
+            $product_tag->product_id = $product_id;
+            $product_tag->tag_id = $tag->id;
+            $product_tag->save();
+            return response()->json([
+                'status' => 1,
+                'message' => "your product associated with the tag ($request->tag) successfully"
+            ]);
+        }
+        $tag = new Tag();
+        $tag->tag = $request->tag;
+        $tag->save();
+        $product_tag = new Product_tag();
+        $product_tag->product_id = $product_id;
+        $product_tag->tag_id = $tag->id;
+        $product_tag->save();
+        return response()->json([
+            'status' => 1,
+            'message' => 'tag added successfully to your product'
         ]);
     }
 

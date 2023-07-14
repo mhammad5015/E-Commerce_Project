@@ -17,44 +17,54 @@ class HomeController extends Controller
 {
     public function getUsers()
     {
-        return User::all();
+        return response()->json([
+            'data' => User::all()
+        ]);
     }
 
     public function userProfile($id)
     {
         $User = DB::table('users')->where('id', $id)->first();
-        return $User;
+        return response()->json([
+            'data' => $User
+        ]);
     }
 
     public function getAllAdmins()
     {
-        return Admin::where('state', false)->get();
+        return response()->json([
+            'data' => Admin::where('state', false)->get()
+        ]);
     }
 
     public function adminProfile($id)
     {
         $admin = DB::table('admins')->where('state', false)->where('id', $id)->first();
-        return $admin;
+        return response()->json([
+            'data' => $admin
+        ]);
     }
 
     public function usersCount()
     {
         $Total_Users = User::count();
-        return [
-            'Total of Users is: ' => $Total_Users,
-        ];
+        return response()->json([
+            'Total of Users is: ' => $Total_Users
+        ]);
     }
 
     public function adminsCount()
     {
         $Total_Admins = Admin::count();
-        return [
+        return response()->json([
             'Total of Admins is: ' => $Total_Admins,
-        ];
+        ]);
     }
     public function getAdminWallet()
     {
-        return Admin::select('company_name', 'wallet')->get();
+        return response()->json([
+            'data' => Admin::select('company_name', 'wallet')->get()
+        ]);
     }
 
     // ads
@@ -70,14 +80,14 @@ class HomeController extends Controller
             $imagePath = $request->file('image')->store('images', 'public');
             $ads->image = 'storage/' . $imagePath;
             $admin->adds()->save($ads);
-            return [
+            return response()->json([
                 'admin' => $admin,
                 'add' => $ads,
-            ];
+            ]);
         } else {
-            return [
+            return response()->json([
                 'message' => 'admin is not found',
-            ];
+            ]);
         }
     }
 
@@ -87,14 +97,20 @@ class HomeController extends Controller
         if ($ad) {
             $ad->delete();
         } else {
-            return ['message' => 'ad is not found'];
+            return response()->json([
+                'message' => 'ad is not found'
+            ]);
         }
-        return ['message' => 'ad deleted successfully'];
+        return response()->json([
+            'message' => 'ad deleted successfully'
+        ]);
     }
 
     public function get_ads()
     {
-        return Ad::with('admin')->get();
+        return response()->json([
+            'data' => Ad::with('admin')->get()
+        ]);
     }
 
     // Favorites

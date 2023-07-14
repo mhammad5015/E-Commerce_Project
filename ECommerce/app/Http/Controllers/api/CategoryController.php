@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isEmpty;
+
 class CategoryController extends Controller
 {
     public function index()
@@ -20,10 +22,19 @@ class CategoryController extends Controller
 
     public function get_all_categories_with_produts()
     {
-        $category = Category::with('products.admin')
+        $category = Category::with('products.admin','products.productImages','products.productTags','products.productVariants')
             ->get()
             ->toTree();
-        return $category;
+        if(!isset($category)){
+            return response()->json([
+                'status'=> 0,
+                'data' => $category
+            ]);
+        }   
+        return response()->json([
+            'status'=>1,
+            'data'=> $category
+        ]);
     }
 
 
@@ -118,8 +129,15 @@ class CategoryController extends Controller
     public function get_Categories_WithProductsForAdmin($admin_id)
     {
         $categoryIds = Product::where('admin_id', $admin_id)
-            ->pluck('category_id');
-        $allCategoryIds = Category::whereIn('id', $categoryIds)
+        ->pluck('category_id');
+        $s = Product::where('admin_id', $admin_id)->first();
+        if (!isset($s)) {
+            return response()->json([
+                'status'=> 0,
+                'message' => 'there is no categories to show'
+            ]);
+        }
+            $allCategoryIds = Category::whereIn('id', $categoryIds)
             ->orWhere('_lft', '<', Category::whereIn('id', $categoryIds)->min('_lft'))
             ->orWhere('_rgt', '>', Category::whereIn('id', $categoryIds)->max('_rgt'))
             ->pluck('id');
@@ -128,7 +146,10 @@ class CategoryController extends Controller
         }])
             ->whereIn('id', $allCategoryIds)
             ->get()->toTree();
-        return $categories;
+        return response()->json([
+            'status'=> 1,
+            'data'=>$categories
+        ]);
     }
 
 
