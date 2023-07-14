@@ -182,13 +182,13 @@
 										},
 										{
 											"key": "phone_number",
-											"value": "8682510012",
+											"value": "8682510013",
 											"type": "text"
 										},
 										{
 											"key": "profile_img_url",
 											"type": "file",
-											"src": "/C:/Users/mhamm/Pictures/wallpaper/wallpaper 1.png"
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/laptop_numbers_desktop_179926_3840x2160.jpg"
 										},
 										{
 											"key": "address",
@@ -975,7 +975,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDJjOGE1NzZhZjc0NTEwNzFmMDgwOTZhYWEwNGI4NjU4MjM0N2UyZjFiZWY5YWJlYTY1ZDFjNzBlMmYzMDM1MmZmOTllYmY0ZWE5MTYyYjciLCJpYXQiOjE2ODkzMjgwNDMuMTkyMDkyLCJuYmYiOjE2ODkzMjgwNDMuMTkyMTA0LCJleHAiOjE3MjA5NTA0NDMuMTAxNTY0LCJzdWIiOiIxIiwic2NvcGVzIjpbInN1cGVyX2FkbWluIl19.M8Kx5pIrFSgXGwXMSsFULypruQ0glnn-9z0iBEZjfd5VcH-tBIUFRrVPNXx-F0eyKouq2Ln2nXAByszytJITrf5e0mnxlC_USoEoeq6axBS8NvzBcHoUuPl1LOsjONGzUykk0Hm-yzTZUidQSBJJJ3ju2oZy4VkO8gITuyrIJFrKwWDmB9Xj8DjnRE4NG4ecd7ZofGX6b4rpLi3nuaUy2mXltFGv338iqC_40hUMCx4H-gDma8mKCfdzLsOio71crwFcxOpuPgTZPuERTGA2iXr_KIazuMR-AInblOiwkgSPJv5qbLamvNK8ooAOg-oveZ9ownhZQzo1fhbH3FabWRP22tzQRHHhSF44QHxe678ddA9hT7--YWP4kmS53BhKJhXlFp-DqDaCU74O8ZY5oxcsj2QR4v9nQL7L4RAPoytnBBdL63LHyYWw37k385kugZsFzxtqAJq6QazqjircVjuvqMYUn61do9DpN8hvmXG9b8ZOaovS-hN3vQPIBFjPcW33ZXQeXmvIBvNMI5Hds8BSc7VsOETvUHEWWtA6faA4HtP8kqAiS5D6CrNqSnBITzRe1gp6N3MyV0urwWlQE1I-c_iNYMjdHM6s0Zxhp1zLn6_fwdAmsMgj7XI_vIPpTdsJxaF991DqaZBNu7bZgsWnJKJ_LC9HwajN8fq8Ud4",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTQwYmZiMTgzZmUyYTI2Njc1N2Y1M2Y1ZmZjNDk0NjQ0NjkyZmE0MTM0YTRmYTc1MjdiNjcxYWI0NzRhYzVlZGUyNTZiMzM3Y2VlMDYyOWYiLCJpYXQiOjE2ODkzNTA1NDUuODgxNzUyLCJuYmYiOjE2ODkzNTA1NDUuODgxNzY1LCJleHAiOjE3MjA5NzI5NDUuMTE0MjkxLCJzdWIiOiIxIiwic2NvcGVzIjpbInN1cGVyX2FkbWluIl19.UMpb1f4qEwJ7s9zkwYzY_oM6vfYrNTxmfIiZeCLftuqG5O80z8_R_BpdmUzoQT94BsP4CPu3y2WunNbOSvx219DpBaFjHjZ4qEzqi2mJLbgeUxDIKWqUHPHFUeCqNGLlRWdp_lmHHVd_Sy0TBsii2ZEOcUfo5N2L8Ibx8qrvh0vmioc9eF0MtT4etNMBZAQaxxTNniImikc-0dTzbztnMSnNOMtReYx9sdbWg3EzzI2C0DqM0XtPNUV9F_qSZpGypZzcruwZcgGK2VgszrN3hbEQNnI85UpL2ioUf_e9_H6l_YOJtjkJUV8P0UfGXUb1OpciE0Wq98kFr7GY8rBnq8l1kqQdkFYINXVEXX0ufxG_-fnaHB2ssueSWGGTwQOAZzMVgMds-ZiMA-detR5W4cIBVdV54syqqSQ3mh_s0sKmjlcWnCCJYOc1RDadgsfS1h5kziArCfC7je_YCVHv-fEPzpVuXB8V7mO6Gi-1pOZz_BcpdVMkDV8qCh4_BkZ8xKcSTaWthaLAsEWstM4j8j0vSHyXS3b_WdTf9ypkEYAfYRXSdrdRoQjbvd2iu7s9XFk_F9MEy9rE30ewPLV89mQeCF7PRH8fsMdfY_kk1aO-V8hB0ex7s-2_cOHDTU2mVe7aZ4Rs7-bQFzsOYJRTMrSPjVvE6A-zDHhEWBsFQJE",
 									"type": "string"
 								}
 							]
@@ -1069,6 +1069,11 @@
 								{
 									"key": "variants[1][variant_quantity]",
 									"value": "15",
+									"type": "default"
+								},
+								{
+									"key": "discount_percentage",
+									"value": "25",
 									"type": "default"
 								}
 							]
@@ -1290,6 +1295,52 @@
 								"api",
 								"product",
 								"add_tag",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_discount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "discount_percentage",
+									"value": "200",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product/add_discount/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"add_discount",
 								"1"
 							]
 						}

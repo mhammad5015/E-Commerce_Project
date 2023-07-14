@@ -28,6 +28,7 @@ class ProductController extends Controller
                 'name' => 'required',
                 'price' => 'required',
                 'description',
+                'discount_percentage',
                 'product_image.*' => 'required|image|mimes:jpeg,png,gif,bmp,jpg,svg',
                 'tag' => 'array',
                 'variants' => 'required|array'
@@ -40,6 +41,9 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->name = $request->name;
         $product->price = $request->price;
+        if (isset($request->discount_percentage)) {
+            $product->discount_percentage = $request->discount_percentage;
+        }
         $product->description = $request->description;
         $product->save();
 
@@ -142,6 +146,21 @@ class ProductController extends Controller
         return response()->json([
             'status' => 1,
             'message' => 'tag added successfully to your product'
+        ]);
+    }
+
+    // add discount
+    public function add_discount(Request $request, $product_id)
+    {
+        $request->validate([
+            'discount_percentage' => 'required',
+        ]);
+        $product = Product::where('id', $product_id)->update([
+            'discount_percentage' => $request->discount_percentage
+        ]);
+        return response()->json([
+            'status' => 1,
+            'message' => 'discount added successfully'
         ]);
     }
 

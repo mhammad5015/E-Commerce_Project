@@ -24,6 +24,7 @@ Route::post('product/aprove_product', [ProductController::class, 'aprove_product
 Route::get('product/get_pending_products', [ProductController::class, 'get_pending_products']);
 
 Route::post('product/add_tag/{product_id}', [ProductController::class, 'add_tag']);
+Route::post('product/add_discount/{product_id}', [ProductController::class, 'add_discount']);
 
 Route::post('product/add_color', [ProductController::class, 'add_color']);
 Route::post('product/add_size', [ProductController::class, 'add_size']);
