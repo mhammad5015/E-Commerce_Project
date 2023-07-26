@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','Total_Price'];
+    protected $fillable = ['user_id', 'Total_Price'];
     protected $table = 'orders';
 
     public function user()
@@ -20,5 +20,4 @@ class Order extends Model
     {
         return $this->hasMany(Order_items::class);
     }
-
 }
