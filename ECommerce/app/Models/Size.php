@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Size extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
+
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
+    }
+
 }

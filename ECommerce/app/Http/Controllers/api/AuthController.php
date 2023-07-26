@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\SendCodeResetPassword;
 use App\Models\Admin;
+use App\Models\Cart;
 use App\Models\ResetCodePassword;
 use App\Models\SuperAdmin;
 use App\Models\User;
@@ -40,6 +41,10 @@ class AuthController extends Controller
         $user = User::create($input);
         $accessToken = $user->createToken('MyApp', ['user'])->accessToken;
         $data = User::find($user->id);
+        // creating cart
+        $cart = new Cart();
+        $cart->user_id = $user->id;
+        $cart->save();
         // sending response
         return response()->json([
             "status" => 1,

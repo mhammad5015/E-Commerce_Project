@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -30,7 +31,7 @@ class CategoryController extends Controller
                 'status'=> 0,
                 'data' => $category
             ]);
-        }   
+        }
         return response()->json([
             'status'=>1,
             'data'=> $category
@@ -158,4 +159,24 @@ class CategoryController extends Controller
         $category = Category::find($category_id);
         return $category->get()->toTree();
     }
+
+
+    public function getAllChildren()
+    {
+    $children = DB::table('categories')
+                    ->whereNotNull('parent_id')
+                    ->get();
+    $null = Category::where("parent_id", NULL)->first();
+    if (!isset($null)) {
+        return response()->json([
+           'status'=> 0,
+           'message' => 'there is no category to show'
+        ]);
+    }
+    return response()->json([
+            'status'=> 1,
+            'data'=>$children
+    ]);
+    }
+
 }

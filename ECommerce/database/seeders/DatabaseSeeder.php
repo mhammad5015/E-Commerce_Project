@@ -31,13 +31,15 @@ class DatabaseSeeder extends Seeder
                 'email' => 'mh@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
-                'phone_number' => '9123456789'
+                'phone_number' => '9123456789',
+                'percentage' => 0.2,
             ], [
                 'company_name' => 'leen',
                 'email' => 'le@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
-                'phone_number' => '8193456789'
+                'phone_number' => '8193456789',
+                'percentage' => 0.4,
             ]
         ]);
         // CREATE CONST COLORS

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('description')->default('');
             $table->string('phone_number')->unique()->numerical()->min(9)->max(10);
             $table->double('wallet')->default(0.0);
+            $table->double('percentage')->default(0.0);
             $table->boolean('state')->default(false);
             $table->timestamps();
         });

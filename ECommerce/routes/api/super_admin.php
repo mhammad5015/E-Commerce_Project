@@ -26,6 +26,8 @@ Route::post('super_admin/create_category', [CategoryController::class, 'create_c
 Route::get('super_admin/get_category', [CategoryController::class, 'index']);
 Route::delete('super_admin/delete_category/{id}', [CategoryController::class, 'delete']);
 Route::post('super_admin/edit_category/{id}', [CategoryController::class, 'update']);
+Route::get('super_admin/getAllChildren', [CategoryController::class, 'getAllChildren']);
+
 // Ads
 Route::post('super_admin/create_ads', [HomeController::class, 'store_ad']);
 Route::delete('super_admin/delete_ads/{id}', [HomeController::class, 'delete_ads']);

@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\HomeController;
+use App\Http\Controllers\api\ProductController;
+use App\Http\Controllers\api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +45,17 @@ Route::get('user/show_rate/{product_id}', [HomeController::class, 'show_rate']);
 
 // Comments
 Route::post('user/add_comment/{product_id}', [HomeController::class, 'add_comment']);
-Route::get('user/get_product_comments/{product_id}', [HomeController::class, 'get_product_comments']);
 Route::delete('user/delete_comment/{comment_id}', [HomeController::class, 'delete_comment']);
+Route::get('user/get_product_comments/{product_id}', [HomeController::class, 'get_product_comments']);
+
+// Cart
+Route::post('user/add_to_cart/{variant_id}', [ProductController::class, 'add_to_cart']);
+Route::post('user/increase_quantity/{variant_id}', [ProductController::class, 'increase_quantity']);
+Route::post('user/decrease_quantity/{variant_id}', [ProductController::class, 'decrease_quantity']);
+Route::delete('user/remove_from_cart/{variant_id}', [ProductController::class, 'remove_from_cart']);
+Route::delete('user/clear_cart', [ProductController::class, 'clear_cart']);
+Route::get('user/get_cart_items', [ProductController::class, 'get_cart_items']);
+// order
+Route::get('user/confirm_order', [OrderController::class, 'confirm_order']);
+Route::get('user/check_items', [OrderController::class, 'check_items']);
+Route::get('user/get_user_orders', [OrderController::class, 'get_user_orders']);

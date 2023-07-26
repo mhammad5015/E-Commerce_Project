@@ -37,5 +37,9 @@ class Product extends Model
         return $this->belongsTo(Admin::class);
     }
 
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
+    }
 
 }

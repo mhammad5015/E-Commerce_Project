@@ -18,3 +18,5 @@ use App\Http\Controllers\api\ProductController;
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin_api', 'scopes:admin']], function () {
 });
 // Route::post('product/add_product/{category_id}', [ProductController::class, 'add_product']);
+Route::post('product/search_all_products', [ProductController::class, 'search_all_products']);
+Route::post('product/search_admin_products/{admin_id}', [ProductController::class, 'search_admin_products']);

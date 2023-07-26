@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Color extends Model
+class Variant_cart extends Model
 {
     use HasFactory;
-
-    public $timestamps = false;
-    public function variants()
-    {
-        return $this->hasMany(Variant::class);
-    }
+    protected $fillable = ['cart_id','variant_id','quantity'];
 
 }

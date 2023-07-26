@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Color;
 use App\Models\PendingProduct;
 use App\Models\Product;
@@ -11,6 +12,8 @@ use App\Models\Product_tag;
 use App\Models\Size;
 use App\Models\Tag;
 use App\Models\Variant;
+use App\Models\Variant_cart;
+use Illuminate\Database\Console\Migrations\StatusCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +36,6 @@ class ProductController extends Controller
                 'tag' => 'array',
                 'variants' => 'required|array'
             ],
-            // ['tag.unique' => 'the tag is already exists',]
         );
         $admin = Auth::guard('admin_api')->user();
         $product = new Product();
@@ -100,7 +102,7 @@ class ProductController extends Controller
             $product->save();
             $variant->save();
         }
-        // sensing response
+        // sending response
         $data = Product::with('productImages', 'productTags', 'productVariants')->find($product->id);
         return response()->json([
             'status' => true,
@@ -169,7 +171,7 @@ class ProductController extends Controller
     {
         Product::findorFail($product_id)->forceDelete();
         return response()->json([
-            'status' => true,
+            'status' => 1,
             'message' => 'Product Deleted Duccessfully'
         ]);
     }
@@ -274,5 +276,207 @@ class ProductController extends Controller
             'status' => true,
             'sizes' => $sizes
         ]);
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    //= USER =//
+    // add_to_cart
+    public function add_to_cart(Request $request, $variant_id)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
+        $variant = Variant::where('id', $variant_id)->first();
+        if ($variant->variant_quantity >= $request->quantity) {
+            $user = Auth::guard('user_api')->user();
+            $cart = Cart::where('user_id', $user->id)->first();
+            $exists = Variant_cart::where('variant_id', $variant->id)->where('cart_id', $cart->id)->exists();
+            if ($exists) {
+                $v = Variant_cart::where('variant_id', $variant->id)->where('cart_id', $cart->id)->first();
+                if (($v->quantity + $request->quantity) < $variant->variant_quantity) {
+                    Variant_cart::where('variant_id', $variant->id)->where('cart_id', $cart->id)->update([
+                        'quantity' => $v->quantity + $request->quantity,
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 0,
+                        'message' => 'the variants is not enough for your request'
+                    ]);
+                }
+            } else {
+                $variant_cart = new Variant_cart();
+                $variant_cart->variant_id = $variant_id;
+                $variant_cart->cart_id = $cart->id;
+                $variant_cart->quantity = $request->quantity;
+                $variant_cart->save();
+            }
+            return response()->json([
+                'status' => 1,
+                'message' => 'variant added to cart successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'the product quantity is not enough'
+            ]);
+        }
+    }
+
+    // increase quantity
+    public function increase_quantity($variant_id)
+    {
+        $user = Auth::guard('user_api')->user();
+        $cart = Cart::where('user_id', $user->id)->first();
+        $variant_cart = Variant_cart::where('cart_id', $cart->id)->where('variant_id', $variant_id)->first();
+        $variant = Variant::where('id', $variant_id)->first();
+        if (($variant_cart->quantity + 1) < $variant->variant_quantity) {
+            Variant_cart::where('cart_id', $cart->id)->where('variant_id', $variant_id)->update([
+                'quantity' => $variant_cart->quantity + 1
+            ]);
+            return response()->json([
+                'status' => 1,
+                'message' => 'incresed successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'there is no more variants to add'
+            ]);
+        }
+    }
+
+    // decrease quantity
+    public function decrease_quantity($variant_id)
+    {
+        $user = Auth::guard('user_api')->user();
+        $cart = Cart::where('user_id', $user->id)->first();
+        $variant_cart = Variant_cart::where('cart_id', $cart->id)->where('variant_id', $variant_id)->first();
+        if (($variant_cart->quantity - 1) == 0) {
+            Variant_cart::where('cart_id', $cart->id)->where('variant_id', $variant_id)->forceDelete();
+            return response()->json([
+                'status' => 0,
+                'message' => 'variant deleted successfully'
+            ]);
+        } else {
+            Variant_cart::where('cart_id', $cart->id)->where('variant_id', $variant_id)->update([
+                'quantity' => $variant_cart->quantity - 1
+            ]);
+            return response()->json([
+                'status' => 1,
+                'message' => 'decresed successfully'
+            ]);
+        }
+    }
+
+    // remove_from_cart
+    public function remove_from_cart($variant_id)
+    {
+        $user = Auth::guard('user_api')->user();
+        $cart = Cart::where('user_id', $user->id)->first();
+        Variant_cart::where('cart_id', $cart->id)->where('variant_id', $variant_id)->forceDelete();
+        return response()->json([
+            'status' => 1,
+            'message' => 'variant removed from cart successfully'
+        ]);
+    }
+
+    // clear cart
+    public function clear_cart()
+    {
+        $user = Auth::guard('user_api')->user();
+        $cart = Cart::where('user_id', $user->id)->first();
+        Variant_cart::where('cart_id', $cart->id)->forceDelete();
+        return response()->json([
+            'status' => 1,
+            'message' => 'cart cleared successfully'
+        ]);
+    }
+
+    // get_cart_items
+    public function get_cart_items()
+    {
+        $user = Auth::guard('user_api')->user();
+        $cart = Cart::where('user_id', $user->id)->first();
+        $items = Variant_cart::where('cart_id', $cart->id)->get();
+        return response()->json([
+            'status' => 1,
+            'cart_items' => $items
+        ]);
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // SEARCH
+    // search in all products
+    public function search_all_products(Request $request)
+    {
+        $tag = Tag::where('tag', $request->serched_product)->first();
+        if (isset($tag)) {
+            $productTags = Product_tag::where('tag_id', $tag->id)->get();
+            $data = [];
+            foreach ($productTags as $item) {
+                $product_id = Product::where('id', $item->product_id)->first(['id']);
+                $data[] = Product::with('productImages')->find($product_id->id);
+            }
+            return response()->json([
+                'status' => 1,
+                'is_tag' => true,
+                'data' => $data
+            ]);
+        }
+        if ($request->serched_product !== null) {
+            if (Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->exists()) {
+                $products = Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->get(['id']);
+                $data = [];
+                foreach ($products as $item) {
+                    $data[] = Product::with('productImages')->find($item->id);
+                }
+                return response()->json([
+                    'status' => 1,
+                    'is_tag' => false,
+                    'data' => $data
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 0,
+                    'message' => 'Not Found',
+                    'data' => []
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Enter Somthing To Search',
+                'data' => []
+            ]);
+        }
+    }
+    // search in admin products
+    public function search_admin_products(Request $request, $admin_id)
+    {
+        if ($request->serched_product !== null) {
+            if (Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->exists()) {
+                $products = Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->get(['id']);
+                $data = [];
+                foreach ($products as $item) {
+                    $data[] = Product::with('productImages')->find($item->id);
+                }
+                return response()->json([
+                    'status' => 1,
+                    'data' => $data
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 0,
+                    'message' => 'Not Found',
+                    'data' => []
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Enter Somthing To Search',
+                'data' => []
+            ]);
+        }
     }
 }
