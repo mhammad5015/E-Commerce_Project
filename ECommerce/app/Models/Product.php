@@ -11,10 +11,10 @@ class Product extends Model
 
     //protected $fillable = ['name', 'price', 'description', 'have_discount', 'approved', 'product_quantity'];
 
-   protected $fillable = [ 'admin_id', 'category_id','name','price', 'description', 'have_discount', 'approved', 'product_quantity'];
+    protected $fillable = ['admin_id', 'category_id', 'name', 'price', 'description', 'have_discount', 'approved', 'product_quantity'];
+    public $timestamps = false;
 
-
-   public function pendingProduct()
+    public function pendingProduct()
     {
         return $this->hasOne(PendingProduct::class);
     }
@@ -42,4 +42,12 @@ class Product extends Model
         return $this->hasMany(Variant::class);
     }
 
+    public function favorite()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

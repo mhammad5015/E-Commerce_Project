@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('variant_id')->constrained('variants')->cascadeOnDelete();
             $table->primary(['cart_id','variant_id']);
             $table->integer('quantity')->default(0);
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Type extends Model
 {
     use HasFactory;
+    
     public $timestamps = false;
-
-    public function productTags()
+    public function size()
     {
-        return $this->hasMany(Product_tag::class);
+        return $this->hasMany(Size::class);
     }
 }

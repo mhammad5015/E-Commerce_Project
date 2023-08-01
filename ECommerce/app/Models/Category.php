@@ -7,18 +7,19 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends Model
 {
-use NodeTrait;
+    use NodeTrait;
 
-protected $table = 'categories';
-protected $fillable = ['name','image'];
+    protected $table = 'categories';
+    protected $fillable = ['name', 'image'];
+    public $timestamps = false;
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
-public function products(){
-    return $this->hasMany(Product::class);
-}
-
-public function admins(){
-    return $this->belongsToMany(Admin::class,'products');
-}
-
+    public function admins()
+    {
+        return $this->belongsToMany(Admin::class, 'products');
+    }
 }

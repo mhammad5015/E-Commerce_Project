@@ -28,7 +28,7 @@ class OrderController extends Controller
         if ($variantCarts->isEmpty()) {
             return response()->json([
                 'status' => 0,
-                'message' => 'The order is empty , please check your cart ',
+                'message' => 'The cart is empty , please check your cart ',
             ]);
         }
         $super_admin = SuperAdmin::first();
@@ -97,6 +97,10 @@ class OrderController extends Controller
             'status' => 1,
             'message' => 'The order confirmed successfully, The Total Price is : ' . $order->Total_Price,
         ]);
+    }
+
+    public function product_order($variant_id)
+    {
     }
 
 

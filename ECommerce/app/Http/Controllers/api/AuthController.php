@@ -245,7 +245,7 @@ class AuthController extends Controller
             "password" => "required"
         ]);
         // check admin
-        $admin = Admin::where("email", $request->email)->first();
+        $admin = Admin::where("email", $request->email)->with('addresses')->first();
         if (isset($admin)) {
             if (Hash::check($request->password, $admin->password)) {
                 // create token

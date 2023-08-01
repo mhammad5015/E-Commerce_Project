@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('image')->nullable();
             $table->nestedSet();
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

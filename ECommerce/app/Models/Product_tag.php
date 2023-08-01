@@ -14,4 +14,14 @@ class Product_tag extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);
+    }
+
+    public function variant()
+    {
+        return $this->hasMany(Variant::class);
+    }
 }

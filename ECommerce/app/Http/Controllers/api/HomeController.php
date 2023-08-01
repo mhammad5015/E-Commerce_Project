@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -72,13 +73,33 @@ class HomeController extends Controller
     {
         $input = $request->validate([
             'admin_id' => 'required|exists:admins,id',
-            'image' => ['image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
+            'image' => 'required',
         ]);
         $admin = Admin::find($input['admin_id']);
         if ($admin) {
             $ads = new Ad();
             $imagePath = $request->file('image')->store('images', 'public');
             $ads->image = 'storage/' . $imagePath;
+            // 1
+            // $imageData = $request->input('image');
+            // $imageBinary = base64_decode($imageData);
+            // $filename = uniqid() . '.jpg';
+            // Storage::disk('public')->put('images/',$filename, $imageBinary);
+            // $ads->image = 'storage/images/' . $filename;
+            // 2
+            // $imageData = $request->input('image'); // unit8list
+            // $binaryData = pack('C*', ...$imageData); // binary string
+            // $filename = 'public/images/' .uniqid() . '.jpg'; // file name
+            // file_put_contents($filename, $binaryData);
+            // $ads->image = 'storage/images/' . $filename;
+            // 3
+            // $imageData = $request->input('image');
+            // $imageBinary = base64_decode($imageData);
+            // $imageName = uniqid();
+            // $filePath = "images/{$imageName}.jpg";
+            // Storage::disk('public')->put($filePath, $imageBinary);
+            // $ads->image = 'storage/'.$filePath;
+            // 4
             $admin->adds()->save($ads);
             return response()->json([
                 'admin' => $admin,
@@ -139,14 +160,15 @@ class HomeController extends Controller
 
     public function remove_from_favorites($product_id)
     {
-        $favorite = Favorite::where('product_id', $product_id)->first();
+        $user = Auth::guard('user_api')->user();
+        $favorite = Favorite::where('user_id', $user->id)->where('product_id', $product_id)->first();
         if (!isset($favorite)) {
             return response()->json([
                 'status' => 0,
                 'message' => 'there is no product with this id to remove'
             ]);
         }
-        Favorite::where('product_id', $product_id)->forceDelete();
+        Favorite::where('user_id', $user->id)->where('product_id', $product_id)->forceDelete();
         return response()->json([
             'status' => 1,
             'message' => 'Product Removed from The Favorites List'
@@ -155,7 +177,8 @@ class HomeController extends Controller
 
     public function get_all_favorites()
     {
-        $favorites = Favorite::all();
+        $user = Auth::guard('user_api')->user();
+        $favorites = Favorite::where('user_id', $user->id)->with('product.productImages')->get();
         return response()->json([
             'status' => 1,
             'data' => $favorites
@@ -235,7 +258,7 @@ class HomeController extends Controller
     }
     public function get_product_comments(Request $request, $product_id)
     {
-        $comments = Comment::where('product_id', $product_id)->get();
+        $comments = Comment::where('product_id', $product_id)->with('user')->get();
         return response()->json([
             'status' => 1,
             'data' => $comments

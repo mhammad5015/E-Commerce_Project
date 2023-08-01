@@ -9,7 +9,6 @@ class Variant extends Model
 {
     use HasFactory;
     protected $fillable = ['product_id','color_id','size_id','variant_quantity'];
-
     public $timestamps = false;
 
 
@@ -23,14 +22,18 @@ class Variant extends Model
         return $this->belongsTo(Color::class);
     }
 
-    public function size()
-    {
-        return $this->belongsTo(Size::class);
-    }
-
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
 
+    public function variantCarts()
+    {
+        return $this->hasMany(VariantCart::class);
+    }
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
+    }
 }

@@ -20,3 +20,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin_api', 'scopes:ad
 // Route::post('product/add_product/{category_id}', [ProductController::class, 'add_product']);
 Route::post('product/search_all_products', [ProductController::class, 'search_all_products']);
 Route::post('product/search_admin_products/{admin_id}', [ProductController::class, 'search_admin_products']);
+Route::post('product/add_type', [ProductController::class, 'add_type']);
+Route::get('product/get_types', [ProductController::class, 'get_types']);
+Route::get('product/get_type_sizes/{type_id}', [ProductController::class, 'get_type_sizes']);

@@ -11,6 +11,7 @@ use App\Models\Product_image;
 use App\Models\Product_tag;
 use App\Models\Size;
 use App\Models\Tag;
+use App\Models\Type;
 use App\Models\Variant;
 use App\Models\Variant_cart;
 use Illuminate\Database\Console\Migrations\StatusCommand;
@@ -40,7 +41,7 @@ class ProductController extends Controller
         $admin = Auth::guard('admin_api')->user();
         $product = new Product();
         $product->admin_id = $admin->id;
-        $product->category_id = $request->category_id;
+        $product->category_id = $category_id;
         $product->name = $request->name;
         $product->price = $request->price;
         if (isset($request->discount_percentage)) {
@@ -95,8 +96,12 @@ class ProductController extends Controller
         foreach ($request->variants as $variant1) {
             $variant = new Variant();
             $variant->product_id = $product->id;
-            $variant->color_id = $variant1['color_id'];
-            $variant->size_id = $variant1['size_id'];
+            if (isset($variant1['color_id'])) {
+                $variant->color_id = $variant1['color_id'];
+            }
+            if (isset($variant1['size_id'])) {
+                $variant->size_id = $variant1['size_id'];
+            }
             $variant->variant_quantity = $variant1['variant_quantity'];
             $product->product_quantity += $variant1['variant_quantity'];
             $product->save();
@@ -179,7 +184,7 @@ class ProductController extends Controller
     // product profile
     public function product_profile($product_id)
     {
-        $product = Product::with('productImages', 'productTags', 'productVariants')->find($product_id);
+        $product = Product::with('productImages', 'productTags.tag', 'productVariants.size','productVariants.color')->find($product_id);
         return response()->json([
             'product' => $product
         ]);
@@ -223,7 +228,7 @@ class ProductController extends Controller
     {
         $products = Product::with('productImages', 'productTags', 'productVariants')->where('approved', true)->get();
         return response()->json([
-            'status' => true,
+            'status' => 1,
             'products' => $products
         ]);
     }
@@ -236,6 +241,14 @@ class ProductController extends Controller
             'color' => 'required',
             'hex' => 'required',
         ]);
+        $c = Color::where('hex', $request->hex)->first();
+        if (isset($c)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Color already exists',
+                'color' => $c
+            ]);
+        }
         $color = new Color();
         $color->color = $request->color;
         $color->hex = $request->hex;
@@ -245,35 +258,77 @@ class ProductController extends Controller
             'message' => 'Color added successfully'
         ]);
     }
-    // add size
-    public function add_size(Request $request)
-    {
-        $request->validate([
-            'size' => 'required',
-        ]);
-        $size = new Size();
-        $size->size = $request->size;
-        $size->save();
-        return response()->json([
-            'status' => 1,
-            'message' => 'size added successfully'
-        ]);
-    }
     // get colors
     public function get_colors()
     {
         $colors = Color::all();
         return response()->json([
-            'status' => true,
+            'status' => 1,
             'colors' => $colors
         ]);
     }
-    // get sizes
-    public function get_sizes()
+    // add type
+    public function add_type(Request $request)
     {
-        $sizes = Size::all();
+        $request->validate([
+            'type' => 'required',
+        ]);
+        $t = Type::where('type', $request->type)->first();
+        if (isset($t)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'type already exists',
+                'type' => $t
+            ]);
+        }
+        $type = new Type();
+        $type->type = $request->type;
+        $type->save();
         return response()->json([
-            'status' => true,
+            'status' => 1,
+            'message' => 'type added successfully',
+            'type' => $type
+        ]);
+    }
+    // add size
+    public function add_size(Request $request, $type_id)
+    {
+        $request->validate([
+            'size' => 'required',
+        ]);
+        $s = Size::where('size', $request->size)->first();
+        if (isset($s)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'size already exists',
+                'size' => $s
+            ]);
+        }
+        $size = new Size();
+        $size->size = $request->size;
+        $size->type_id = $type_id;
+        $size->save();
+        return response()->json([
+            'status' => 1,
+            'message' => 'size added successfully',
+            'size' => $size
+        ]);
+    }
+    // get types
+    public function get_types()
+    {
+        $types = Type::all();
+        return response()->json([
+            'status' => 1,
+            'types' => $types
+        ]);
+    }
+    // get sizes
+    public function get_type_sizes($type_id)
+    {
+        $sizes = Size::where('type_id', $type_id)->get();
+        return response()->json([
+            'status' => 1,
             'sizes' => $sizes
         ]);
     }
@@ -398,7 +453,17 @@ class ProductController extends Controller
     {
         $user = Auth::guard('user_api')->user();
         $cart = Cart::where('user_id', $user->id)->first();
-        $items = Variant_cart::where('cart_id', $cart->id)->get();
+        // $items = Variant_cart::where('cart_id', $cart->id)->get();
+        $variantCarts = Variant_cart::where('cart_id', $cart->id)->with('variant.product.productImages', 'variant.color', 'variant.size')->get();
+        $items = $variantCarts->map(function ($vc) {
+            return [
+                'variant_id' => $vc->variant->id,
+                'product' => $vc->variant->product,
+                'size' => $vc->variant->size,
+                'color' => $vc->variant->color,
+                'quantity' => $vc->quantity,
+            ];
+        });
         return response()->json([
             'status' => 1,
             'cart_items' => $items
@@ -414,8 +479,10 @@ class ProductController extends Controller
             $productTags = Product_tag::where('tag_id', $tag->id)->get();
             $data = [];
             foreach ($productTags as $item) {
-                $product_id = Product::where('id', $item->product_id)->first(['id']);
-                $data[] = Product::with('productImages')->find($product_id->id);
+                $product = Product::where('id', $item->product_id)->first();
+                if ($product->approved == 1) {
+                    $data[] = Product::with('productImages')->find($product->id);
+                }
             }
             return response()->json([
                 'status' => 1,
@@ -424,8 +491,8 @@ class ProductController extends Controller
             ]);
         }
         if ($request->serched_product !== null) {
-            if (Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->exists()) {
-                $products = Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->get(['id']);
+            if (Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->exists()) {
+                $products = Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->get(['id']);
                 $data = [];
                 foreach ($products as $item) {
                     $data[] = Product::with('productImages')->find($item->id);
@@ -454,8 +521,8 @@ class ProductController extends Controller
     public function search_admin_products(Request $request, $admin_id)
     {
         if ($request->serched_product !== null) {
-            if (Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->exists()) {
-                $products = Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->get(['id']);
+            if (Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->exists()) {
+                $products = Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->get(['id']);
                 $data = [];
                 foreach ($products as $item) {
                     $data[] = Product::with('productImages')->find($item->id);

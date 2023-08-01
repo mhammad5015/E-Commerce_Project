@@ -15,4 +15,8 @@ class Size extends Model
         return $this->hasMany(Variant::class);
     }
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }

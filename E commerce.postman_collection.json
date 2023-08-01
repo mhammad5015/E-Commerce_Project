@@ -167,7 +167,7 @@
 										},
 										{
 											"key": "email",
-											"value": "le@gmail.com",
+											"value": "le1@gmail.com",
 											"type": "text"
 										},
 										{
@@ -182,7 +182,7 @@
 										},
 										{
 											"key": "phone_number",
-											"value": "8682510313",
+											"value": "8682510314",
 											"type": "text"
 										},
 										{
@@ -342,7 +342,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"mh@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}"
+							"raw": "{\r\n    \"email\": \"addidas@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}"
 						},
 						"url": {
 							"raw": "localhost:8000/api/dashboard/dashboard_login",
@@ -436,7 +436,7 @@
 								},
 								{
 									"key": "email",
-									"value": "sda@gmail.com",
+									"value": "ad@gmail.com",
 									"type": "default"
 								},
 								{
@@ -451,18 +451,19 @@
 								},
 								{
 									"key": "phone_number",
-									"value": "0987675642",
+									"value": "0987675641",
 									"type": "default"
 								},
 								{
 									"key": "logo",
 									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/dissconnectedwallpaper.jpg"
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
 								},
 								{
-									"key": "Commercial_Record",
+									"key": "",
 									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+									"src": [],
+									"disabled": true
 								},
 								{
 									"key": "address[]",
@@ -770,7 +771,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "cloth",
+									"value": "cloth3",
 									"type": "text"
 								},
 								{
@@ -917,7 +918,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/admin/get_category_productForAdmin/3",
+							"raw": "localhost:8000/api/admin/get_category_productForAdmin/1",
 							"host": [
 								"localhost"
 							],
@@ -926,7 +927,7 @@
 								"api",
 								"admin",
 								"get_category_productForAdmin",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -997,6 +998,633 @@
 			"name": "Product",
 			"item": [
 				{
+					"name": "product",
+					"item": [
+						{
+							"name": "add_product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjM0MzZkNjVmOTQzY2U0Zjg4MDg3NTgzNTc4NDdkMzc4ZmExNjgxNjk2Y2NmM2YwNGY3ZmE0NTA0MjQ3MTdlYzE0NjEzYmZlYmQwOGRlOWYiLCJpYXQiOjE2OTA3ODk5ODguMjM3MTM2LCJuYmYiOjE2OTA3ODk5ODguMjM3MTQ5LCJleHAiOjE3MjI0MTIzODguMTQwNDg1LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.LAWfsN22nFt6WGXWcoctMrgEhVSwHEMPiO7Bci_Wx0KGeTMOGDCI52hznDpi_vNwT-NbxzZGGPpPcOI9aFDaa7P5jSV54bHfnQBawbcfUGWNW4wzZw-yjFW2AXSi9YeDV_Vkn00s94l9jGlYl_ssxFpBjC31t-_c_3ZE_5Q2WXBL-7gCfLl-uzp-c8ufRxuoQTNk1zKt8W_S2KnK9qbjTBp4VXn9fOTdhzDC3ys6q2HQ7l1UlisCZnZMRRm6Wi_QTEKolU9b4JepXv4OvLJZEMdQMt1xmgDbPsEldClYbPLOehMY7obiWCk7oe4tdfsXXDsikkgxyxdN0BRNa9gK6jXeyc29mmyGEpJARMoFDL8cAQBh9srHvWqap3cWsik1oxQyeUJab_bzjkohcpNXmaoUf1cbdzwYFLGjh5YpBnoxkqZ5qvZsK4Vg4ZomSxGGggoBpQg2pJoscT5PcC1Iunp4kIqNDweN0ycMe2j7_p1tg-nv-JYi3H3OsTVzyGHivODk4rxwuRQvs52vDYlyx5OqWHHKBkbe7rqQuk31eOJJEXSlzyJlSziLRyB9jhGzPQkGHUCBdfJ3d_oaoVXxn7vFE0pWfn8jInpOaT3FEIdJXORLaWKapiKz5euF0SAMeMvcuEFA6YNbwZXvW8pa_IwULRniep01inANRNbX9KY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tshirt5",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "100",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "this is description",
+											"type": "default"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+										},
+										{
+											"key": "tag[]",
+											"value": "fire Tshirt1",
+											"type": "text"
+										},
+										{
+											"key": "tag[]",
+											"value": "cut Tshirt1",
+											"type": "default"
+										},
+										{
+											"key": "tag[]",
+											"value": "tag Tshirt1",
+											"type": "default"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/17cd4124e87c4b30a5fecf2605d86b6b.jpg"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+										},
+										{
+											"key": "variants[0][color_id]",
+											"value": "1",
+											"type": "default"
+										},
+										{
+											"key": "variants[0][size_id]",
+											"value": "1",
+											"type": "default"
+										},
+										{
+											"key": "variants[0][variant_quantity]",
+											"value": "10",
+											"type": "default"
+										},
+										{
+											"key": "variants[1][color_id]",
+											"value": "4",
+											"type": "default"
+										},
+										{
+											"key": "variants[1][size_id]",
+											"value": "3",
+											"type": "default"
+										},
+										{
+											"key": "variants[1][variant_quantity]",
+											"value": "15",
+											"type": "default"
+										},
+										{
+											"key": "discount_percentage",
+											"value": "25",
+											"type": "default",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "default",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/api/product/add_product/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_product",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_product",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/product/delete_product/7",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"delete_product",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve_product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_id\":3,\r\n    \"approved\":true\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8000/api/product/aprove_product",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"aprove_product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_pending_products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/product/get_pending_products",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_pending_products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "product_profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/product/product_profile/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"product_profile",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_all_products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/product/get_all_products",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_all_products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_tag",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "tag",
+											"value": "fire Tshirt",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/add_tag/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_tag",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_discount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "discount_percentage",
+											"value": "200",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/add_discount/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_discount",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "variant",
+					"item": [
+						{
+							"name": "add_color",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"color\":\"red\",\r\n    \"hex\":\"#fff000\"\r\n}"
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/add_color",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_color"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_type",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "type",
+											"value": "gelewery",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/add_type",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_size",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"size\":45\r\n}"
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/add_size/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_size",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_colors",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/get_colors",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_colors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_types",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/get_types",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_type_sizes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/get_type_sizes/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_type_sizes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "cart",
 					"item": [
 						{
@@ -1007,7 +1635,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWJlYTI0MmJkNGFjZDc4NTE0ODU5Y2FkMzk4ZmUwMTQzYmM4ZjA5MzMyYzI3YmQ3Y2NhY2JkZDRhOTZjMDRhMTAxOWZjYWE4ZjAxZmVmMmYiLCJpYXQiOjE2OTAyMjgzOTYuODgwNjQyLCJuYmYiOjE2OTAyMjgzOTYuODgwNjcxLCJleHAiOjE3MjE4NTA3OTYuNzUxODUzLCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.WkYHhpAbhDRxIvSyO8Av4uzbpl3APOGtUJk-Sw_eg4f3cvTJBPjE91gQEqiIDSLkTiJTLdiqqBZSIrAYYtfgrZGiRJ_4FtdVE0N2SRWzST5owdqLKiXRaBkFelD6ZqXxLcieCq1ul5k-lX24boLGjs5wld6_-wOZ_Olp74CFehBgc2MORkOE_KTMnQfVyh2clTi2LW3TGfR2vCZQPBtNmhP3uf4TrnF0sMxQZkrYkepC2QdaZ56hwFj4bePH2v-jfmIMR03pf1hQjdBWocQYrAypqwz4wcsQm2qAILr88_LmIivLPxVIz34Xp_iiDsr-_GGH3Mud8pGdQK-eflj_7l3O1u23hLR-Vr79pdTEQl2cGmWPPcbkN3RJm6nxIFg_tx7SglHhaEf8xdv9KG8gk9QBJgCpYm_bn6qg0sD9QesWQZgdUUJKYPrQaZxF-EjLTBQljsia6uaVvQJLMPGlvRQa3U_ixEQfuih5CMc8zaZ-NJVtmX3yMKoucTuI3KbPW_X1ROoAGSFbjI-z-F5nwKSY16aC3RIvXMugbindCuJd55nu8UnnGBOV-dp8XjDowItC7ElMCY2tnXPt2bZvUdV79PCo11HJrEq6r8NzE2F_Lz1fYEZ86uVlB72QgGSnmVE_0DUb8ot8380FNQAo9VbNl9PNpCDCZiWZcrMnKw4",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmE1MDNmZWIyOTdjZTA4YTFhYjVkNjE2OTJiYmYzZDQwMTMxNzc2ZjMwMWRjMDczMzAwNWUyZjRiNzQ3YmM1MTdlZWI5NTVlNDRiNzYyNjUiLCJpYXQiOjE2OTA3OTM1NzkuNzkyNTc3LCJuYmYiOjE2OTA3OTM1NzkuNzkyNTg2LCJleHAiOjE3MjI0MTU5NzkuNjc2Mzg5LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.O8Xevjr3cCXr81IYYTTkyixYH4eKu3Q4Qrpo-eHxYgOfoH1qrx0aS6nY3AXBwx5Xf8lYXtA3MG8CcG1lAgN-o1hNHibd4m0SOlxKmyg_J7EthDPa3PcdCML2RRmargq-0WzHWcj3azZigNaflubi6rHuUQN8iUYlOfAE5hjyVzn8GlOefMLB1Ig4vgcCstUxYdgn4axri5S-xKV3iTtIE7CGjBEs8B1N0ry2V1h1nvslGLCRfOf6ZH2wjHEgLoZFXpcHoB-a_IUYMgy-DYg7SiinMu7DlK1h8u4_rhmNcMUD-fYtFmxPT76-NEGFNVHG7yHwjdhCVNuPSiRAEHI0hqmWQEn5zg8X0Ux26HlN4eXZahHEah30C-rV7XNTwjYPRSdlc5OvOm1ip_bS1UycWSOJXgCsTDEhTJku61c7FVk66BX0UYj9vFcWFE3_48Zq-hEtQuVxb3wMPlqOWt1ShtS1FkMMAKw3-KHBDAJQ5xcalm6k9OWfQYnnPh7ENky143ED2lLHq9yk0QpKCT0w2KUsbeu_KyakVdem9yGvLme1H0nxg5u97E6BFqU1jfdUtSA5jrJE1sVhOkZSQvnetlSiqtgTfBV9xyECWSaXhEVnH7ac9KcmJGSYIQpXP-ZfhL4bdB-zH5J_OyZnvL9o-l6b9lGShtnRLsN-umLoZlk",
 											"type": "string"
 										}
 									]
@@ -1030,13 +1658,13 @@
 									"formdata": [
 										{
 											"key": "quantity",
-											"value": "2",
+											"value": "1",
 											"type": "default"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:8000/api/user/add_to_cart/2",
+									"raw": "localhost:8000/api/user/add_to_cart/3",
 									"host": [
 										"localhost"
 									],
@@ -1045,7 +1673,7 @@
 										"api",
 										"user",
 										"add_to_cart",
-										"2"
+										"3"
 									]
 								}
 							},
@@ -1059,7 +1687,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2M4MWJiZTEyZjVmYWY1MTE0MzJiMjNkZjMzMzk4NGM5NDJmYzRjYmY3YjVjYTMxMjIzMDZiNGNjYTRiYjM3ODRlM2YyZDlkZThjNmZkMzIiLCJpYXQiOjE2ODk1MjI2OTYuNzg5OTEzLCJuYmYiOjE2ODk1MjI2OTYuNzg5OTIzLCJleHAiOjE3MjExNDUwOTYuNjMzNzkyLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.QI8f3l8TV6jvStvx7fraUM6gMKddal-hIjOku62mqdeBdJsHfQi7tHoJHh-o7hNBF2HFwO-aV1g39Gbl_6q3ik23EDVFgVDENQRPlniP4rmGjbAUNDXQB2BWP2aC_Za9IzR4Halme-IJQn2gEj7EDzOVh1DSLVJ4mKdIytayXKypHUmWwT-FxnU4ikj9B1GxxHCdvjYLDxM6REgM-mg0ueAqQcFEaaq3Kt2mOU8fw9FVXVECWWVspEfQ8J2ibmysy2AH6qWsLV2sf2PXcYT4gRWFZ9rizzUn8tIvAikEFlJNFsbXzF4QGtCBV0WHGz1GB5QMLOCsWC9QH12EQcIb9QpxAKaaioh10tzq28Eg0Zui4I-V04Egqc61qFnOMv-ToZB0DIChM4Lny32zHrrhksNDbXL9pSdeNDvfhSDU7g9JvnD-4CxDZbozstizKBP8fpYcDrOai3H_RBheLnKwSkYJuFKlgxSVYuB0KJt_RVVyzdzOsVmjKv4r9KDmJm9h71xXOA7WSWMKFXsEd1LtPgrAIYKJLcsKDk1nbXpBLaTnvzrUWZWm_P8nfvkaK8c6wBX3X2DCQMesgcvXTZffToiyheoboaVJW8cMujgxi6R587QjPVLkgpD6gzz4H2nj8JG6GGfZdtqvYD462FNwEwLWtdch2edgkYCR-aM9Y68",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDExMTE3ZTk5N2E5ZDJmMDUyYzY3MzRjMzRiZjE2N2NmMDcyMGJlZTViYzZhNWVlMzExNmZkNGRlZTEzOWYwYTk4OGJiNmFhNWZiZDc2NDEiLCJpYXQiOjE2OTA3MjIwODQuMzk4OTY0LCJuYmYiOjE2OTA3MjIwODQuMzk4OTcyLCJleHAiOjE3MjIzNDQ0ODQuMTc3MTAxLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.sbbUcidEPnSFGOUY2WOW26-L8ELKBCIjzA1LDD5PVk0dsQbOA93cqIG_mgLqvCGOPvRXPwS0EH2GasLBbEbfe7BXCnsx6m-WsWN65H2HBorX_p1K59RYxfdwQHeTWwem63f_aXwu0Ta60NOXDQJ9zRk1c09dPLQ9UfxfjfHXhpqG7Vzw7DwM3e9D4X5ZADtjw8yivF97jHQD6g70MtZSWqNWFgyxqthB0RkpvYIAVL5To0ebxm-w1xLsUK2IAQL9Fm7kmtXGHYF5Lb84IcyEFSBSaDbjTbixCXOMIkVqvjo38ZYPZB4YeH91rMIIsGInfIxMVWzUY8RH0DKGM0jV-FVGUhdpVHkMK-gShDC8VdJ5KN0pKSJt2Yj-hfP5ij9hUgLjCTppzhk-wu_HWdyUxfRj2KVcNe_mixEjDcYqizHED2dNtXkj2Qb1dXEsx3ocjRnL_WdSXDejuu5lZAddTqwx2DqygSXoMWiezhETDzEozjisoIreAhVfoS8ZdBOZ3SuE5HnNq62vUe-v_WL3it2rQ00F8AA5BRbeQrAsqn7XVBV762QnM_DCxU9iiImsPRz9ewJysms3iIe3e95AkQ7RvgyfeEFwst-7V7qul-5K7ZQHkktLWDmiJIQN4LALdyFggd6NVH06g4xMGqmc0SyW66bjgRhUXM0q0SBZO6M",
 											"type": "string"
 										}
 									]
@@ -1101,7 +1729,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2M4MWJiZTEyZjVmYWY1MTE0MzJiMjNkZjMzMzk4NGM5NDJmYzRjYmY3YjVjYTMxMjIzMDZiNGNjYTRiYjM3ODRlM2YyZDlkZThjNmZkMzIiLCJpYXQiOjE2ODk1MjI2OTYuNzg5OTEzLCJuYmYiOjE2ODk1MjI2OTYuNzg5OTIzLCJleHAiOjE3MjExNDUwOTYuNjMzNzkyLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.QI8f3l8TV6jvStvx7fraUM6gMKddal-hIjOku62mqdeBdJsHfQi7tHoJHh-o7hNBF2HFwO-aV1g39Gbl_6q3ik23EDVFgVDENQRPlniP4rmGjbAUNDXQB2BWP2aC_Za9IzR4Halme-IJQn2gEj7EDzOVh1DSLVJ4mKdIytayXKypHUmWwT-FxnU4ikj9B1GxxHCdvjYLDxM6REgM-mg0ueAqQcFEaaq3Kt2mOU8fw9FVXVECWWVspEfQ8J2ibmysy2AH6qWsLV2sf2PXcYT4gRWFZ9rizzUn8tIvAikEFlJNFsbXzF4QGtCBV0WHGz1GB5QMLOCsWC9QH12EQcIb9QpxAKaaioh10tzq28Eg0Zui4I-V04Egqc61qFnOMv-ToZB0DIChM4Lny32zHrrhksNDbXL9pSdeNDvfhSDU7g9JvnD-4CxDZbozstizKBP8fpYcDrOai3H_RBheLnKwSkYJuFKlgxSVYuB0KJt_RVVyzdzOsVmjKv4r9KDmJm9h71xXOA7WSWMKFXsEd1LtPgrAIYKJLcsKDk1nbXpBLaTnvzrUWZWm_P8nfvkaK8c6wBX3X2DCQMesgcvXTZffToiyheoboaVJW8cMujgxi6R587QjPVLkgpD6gzz4H2nj8JG6GGfZdtqvYD462FNwEwLWtdch2edgkYCR-aM9Y68",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDExMTE3ZTk5N2E5ZDJmMDUyYzY3MzRjMzRiZjE2N2NmMDcyMGJlZTViYzZhNWVlMzExNmZkNGRlZTEzOWYwYTk4OGJiNmFhNWZiZDc2NDEiLCJpYXQiOjE2OTA3MjIwODQuMzk4OTY0LCJuYmYiOjE2OTA3MjIwODQuMzk4OTcyLCJleHAiOjE3MjIzNDQ0ODQuMTc3MTAxLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.sbbUcidEPnSFGOUY2WOW26-L8ELKBCIjzA1LDD5PVk0dsQbOA93cqIG_mgLqvCGOPvRXPwS0EH2GasLBbEbfe7BXCnsx6m-WsWN65H2HBorX_p1K59RYxfdwQHeTWwem63f_aXwu0Ta60NOXDQJ9zRk1c09dPLQ9UfxfjfHXhpqG7Vzw7DwM3e9D4X5ZADtjw8yivF97jHQD6g70MtZSWqNWFgyxqthB0RkpvYIAVL5To0ebxm-w1xLsUK2IAQL9Fm7kmtXGHYF5Lb84IcyEFSBSaDbjTbixCXOMIkVqvjo38ZYPZB4YeH91rMIIsGInfIxMVWzUY8RH0DKGM0jV-FVGUhdpVHkMK-gShDC8VdJ5KN0pKSJt2Yj-hfP5ij9hUgLjCTppzhk-wu_HWdyUxfRj2KVcNe_mixEjDcYqizHED2dNtXkj2Qb1dXEsx3ocjRnL_WdSXDejuu5lZAddTqwx2DqygSXoMWiezhETDzEozjisoIreAhVfoS8ZdBOZ3SuE5HnNq62vUe-v_WL3it2rQ00F8AA5BRbeQrAsqn7XVBV762QnM_DCxU9iiImsPRz9ewJysms3iIe3e95AkQ7RvgyfeEFwst-7V7qul-5K7ZQHkktLWDmiJIQN4LALdyFggd6NVH06g4xMGqmc0SyW66bjgRhUXM0q0SBZO6M",
 											"type": "string"
 										}
 									]
@@ -1143,7 +1771,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2M4MWJiZTEyZjVmYWY1MTE0MzJiMjNkZjMzMzk4NGM5NDJmYzRjYmY3YjVjYTMxMjIzMDZiNGNjYTRiYjM3ODRlM2YyZDlkZThjNmZkMzIiLCJpYXQiOjE2ODk1MjI2OTYuNzg5OTEzLCJuYmYiOjE2ODk1MjI2OTYuNzg5OTIzLCJleHAiOjE3MjExNDUwOTYuNjMzNzkyLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.QI8f3l8TV6jvStvx7fraUM6gMKddal-hIjOku62mqdeBdJsHfQi7tHoJHh-o7hNBF2HFwO-aV1g39Gbl_6q3ik23EDVFgVDENQRPlniP4rmGjbAUNDXQB2BWP2aC_Za9IzR4Halme-IJQn2gEj7EDzOVh1DSLVJ4mKdIytayXKypHUmWwT-FxnU4ikj9B1GxxHCdvjYLDxM6REgM-mg0ueAqQcFEaaq3Kt2mOU8fw9FVXVECWWVspEfQ8J2ibmysy2AH6qWsLV2sf2PXcYT4gRWFZ9rizzUn8tIvAikEFlJNFsbXzF4QGtCBV0WHGz1GB5QMLOCsWC9QH12EQcIb9QpxAKaaioh10tzq28Eg0Zui4I-V04Egqc61qFnOMv-ToZB0DIChM4Lny32zHrrhksNDbXL9pSdeNDvfhSDU7g9JvnD-4CxDZbozstizKBP8fpYcDrOai3H_RBheLnKwSkYJuFKlgxSVYuB0KJt_RVVyzdzOsVmjKv4r9KDmJm9h71xXOA7WSWMKFXsEd1LtPgrAIYKJLcsKDk1nbXpBLaTnvzrUWZWm_P8nfvkaK8c6wBX3X2DCQMesgcvXTZffToiyheoboaVJW8cMujgxi6R587QjPVLkgpD6gzz4H2nj8JG6GGfZdtqvYD462FNwEwLWtdch2edgkYCR-aM9Y68",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmE1MDNmZWIyOTdjZTA4YTFhYjVkNjE2OTJiYmYzZDQwMTMxNzc2ZjMwMWRjMDczMzAwNWUyZjRiNzQ3YmM1MTdlZWI5NTVlNDRiNzYyNjUiLCJpYXQiOjE2OTA3OTM1NzkuNzkyNTc3LCJuYmYiOjE2OTA3OTM1NzkuNzkyNTg2LCJleHAiOjE3MjI0MTU5NzkuNjc2Mzg5LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.O8Xevjr3cCXr81IYYTTkyixYH4eKu3Q4Qrpo-eHxYgOfoH1qrx0aS6nY3AXBwx5Xf8lYXtA3MG8CcG1lAgN-o1hNHibd4m0SOlxKmyg_J7EthDPa3PcdCML2RRmargq-0WzHWcj3azZigNaflubi6rHuUQN8iUYlOfAE5hjyVzn8GlOefMLB1Ig4vgcCstUxYdgn4axri5S-xKV3iTtIE7CGjBEs8B1N0ry2V1h1nvslGLCRfOf6ZH2wjHEgLoZFXpcHoB-a_IUYMgy-DYg7SiinMu7DlK1h8u4_rhmNcMUD-fYtFmxPT76-NEGFNVHG7yHwjdhCVNuPSiRAEHI0hqmWQEn5zg8X0Ux26HlN4eXZahHEah30C-rV7XNTwjYPRSdlc5OvOm1ip_bS1UycWSOJXgCsTDEhTJku61c7FVk66BX0UYj9vFcWFE3_48Zq-hEtQuVxb3wMPlqOWt1ShtS1FkMMAKw3-KHBDAJQ5xcalm6k9OWfQYnnPh7ENky143ED2lLHq9yk0QpKCT0w2KUsbeu_KyakVdem9yGvLme1H0nxg5u97E6BFqU1jfdUtSA5jrJE1sVhOkZSQvnetlSiqtgTfBV9xyECWSaXhEVnH7ac9KcmJGSYIQpXP-ZfhL4bdB-zH5J_OyZnvL9o-l6b9lGShtnRLsN-umLoZlk",
 											"type": "string"
 										}
 									]
@@ -1286,7 +1914,7 @@
 									"formdata": [
 										{
 											"key": "serched_product",
-											"value": "fire Tshirt1",
+											"value": "T",
 											"type": "default"
 										}
 									]
@@ -1328,7 +1956,7 @@
 									"formdata": [
 										{
 											"key": "serched_product",
-											"value": "s",
+											"value": "T",
 											"type": "default"
 										}
 									]
@@ -1350,535 +1978,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "add_product",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWJlYTI0MmJkNGFjZDc4NTE0ODU5Y2FkMzk4ZmUwMTQzYmM4ZjA5MzMyYzI3YmQ3Y2NhY2JkZDRhOTZjMDRhMTAxOWZjYWE4ZjAxZmVmMmYiLCJpYXQiOjE2OTAyMjgzOTYuODgwNjQyLCJuYmYiOjE2OTAyMjgzOTYuODgwNjcxLCJleHAiOjE3MjE4NTA3OTYuNzUxODUzLCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.WkYHhpAbhDRxIvSyO8Av4uzbpl3APOGtUJk-Sw_eg4f3cvTJBPjE91gQEqiIDSLkTiJTLdiqqBZSIrAYYtfgrZGiRJ_4FtdVE0N2SRWzST5owdqLKiXRaBkFelD6ZqXxLcieCq1ul5k-lX24boLGjs5wld6_-wOZ_Olp74CFehBgc2MORkOE_KTMnQfVyh2clTi2LW3TGfR2vCZQPBtNmhP3uf4TrnF0sMxQZkrYkepC2QdaZ56hwFj4bePH2v-jfmIMR03pf1hQjdBWocQYrAypqwz4wcsQm2qAILr88_LmIivLPxVIz34Xp_iiDsr-_GGH3Mud8pGdQK-eflj_7l3O1u23hLR-Vr79pdTEQl2cGmWPPcbkN3RJm6nxIFg_tx7SglHhaEf8xdv9KG8gk9QBJgCpYm_bn6qg0sD9QesWQZgdUUJKYPrQaZxF-EjLTBQljsia6uaVvQJLMPGlvRQa3U_ixEQfuih5CMc8zaZ-NJVtmX3yMKoucTuI3KbPW_X1ROoAGSFbjI-z-F5nwKSY16aC3RIvXMugbindCuJd55nu8UnnGBOV-dp8XjDowItC7ElMCY2tnXPt2bZvUdV79PCo11HJrEq6r8NzE2F_Lz1fYEZ86uVlB72QgGSnmVE_0DUb8ot8380FNQAo9VbNl9PNpCDCZiWZcrMnKw4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Tshirt5",
-									"type": "default"
-								},
-								{
-									"key": "price",
-									"value": "100",
-									"type": "default"
-								},
-								{
-									"key": "description",
-									"value": "this is description",
-									"type": "default"
-								},
-								{
-									"key": "product_image[]",
-									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
-								},
-								{
-									"key": "tag[]",
-									"value": "fire Tshirt1",
-									"type": "text"
-								},
-								{
-									"key": "tag[]",
-									"value": "cut Tshirt1",
-									"type": "default"
-								},
-								{
-									"key": "tag[]",
-									"value": "tag Tshirt1",
-									"type": "default"
-								},
-								{
-									"key": "product_image[]",
-									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/17cd4124e87c4b30a5fecf2605d86b6b.jpg"
-								},
-								{
-									"key": "product_image[]",
-									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
-								},
-								{
-									"key": "variants[0][color_id]",
-									"value": "1",
-									"type": "default"
-								},
-								{
-									"key": "variants[0][size_id]",
-									"value": "1",
-									"type": "default"
-								},
-								{
-									"key": "variants[0][variant_quantity]",
-									"value": "10",
-									"type": "default"
-								},
-								{
-									"key": "variants[1][color_id]",
-									"value": "4",
-									"type": "default"
-								},
-								{
-									"key": "variants[1][size_id]",
-									"value": "3",
-									"type": "default"
-								},
-								{
-									"key": "variants[1][variant_quantity]",
-									"value": "15",
-									"type": "default"
-								},
-								{
-									"key": "discount_percentage",
-									"value": "25",
-									"type": "default",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:8000/api/product/add_product/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"add_product",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_product",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/product/delete_product/7",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"delete_product",
-								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "approve_product",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"product_id\":3,\r\n    \"approved\":true\r\n}"
-						},
-						"url": {
-							"raw": "localhost:8000/api/product/aprove_product",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"aprove_product"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_pending_products",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/product/get_pending_products",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"get_pending_products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "product_profile",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/product/product_profile/4",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"product_profile",
-								"4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_all_products",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/product/get_all_products",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"get_all_products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add_tag",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "tag",
-									"value": "fire Tshirt",
-									"type": "default"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/add_tag/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"add_tag",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add_discount",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "discount_percentage",
-									"value": "200",
-									"type": "default"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/add_discount/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"add_discount",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add_color",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"color\":\"blueee\",\r\n    \"hex\":\"#fff000\"\r\n}"
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/add_color",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"add_color"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add_size",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"size\":\"XXXXXL\"\r\n}"
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/add_size",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"add_size"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_colors",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/get_colors",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"get_colors"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_sizes",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "default"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/get_sizes",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"product",
-								"get_sizes"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -1913,7 +2012,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Leen/Pictures/fe56b048cf22e6dc00123f680a3f0bf2.jpg"
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
 								}
 							]
 						},
@@ -1992,7 +2091,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTcxMjRlZjljYTg5NDQzNzYxMjNlNDFhNjgyZjk0NDcwYTcyMDkyODcwNjhhN2QyMjRkNjA0YzQ2ZTk5MWExZGFjMjhmOGMxMWZjMzdlMjQiLCJpYXQiOjE2ODU3Mjc0MDAuNTE2NSwibmJmIjoxNjg1NzI3NDAwLjUxNjUxMSwiZXhwIjoxNzE3MzQ5ODAwLjQ0Mjg0Nywic3ViIjoiMSIsInNjb3BlcyI6WyJ1c2VyIl19.jt8i_I2h9zbPSCo9H_eyVuLwV22kwAeMWhkAHD9l2QKpxk5xzlwW92H0wjoAWQeS1c-Wv2J2yFlWayHXX7o4EkQtOoROid3uAi_jxOd14GzbVYg6kl9KADdF-lfJf-QN5EBusv7YM_gvOSBfS_mgchCdaXaFe34ScwAbRT5MRsHvzuJQt4RNGbYLx3b8iKvXWNDq3PlQl1K95tgv4cChX6GemTh8gUYRgTNofyy6a3Ho7dWKiLnH0PizpeZcpwL43D4Y8uZbq5nM5RSEC5l2LxKXxu7oo3xISNjz8P8PgFstbeWm9VcKZkwuYtLlFFF9KeP4Q8NPnRgR-QBE6onmcBwE5dvsGsZx8QyOxbx58GxMnBuJrw1vjgp4JKHxrnMCQhM7ter4QkJINXmxkf1rGnSX0JE80RvUEJHkQrTadx9eg8YMkVCCUwE74nsV2EKNeeocY0sTU4kMIc1xVBzvytSbvdmzPbdqGGd9na-L8lX79UwGwChV4YDpwsOzehTTbVl4Yqad_XoK0fF56L_Yf1YUk94fqxdBKCVd2cl28RVk71mQUMKsEnNflOBb0ZkJMwY_HCZlueoBDhVndCWdXhF-BGMETRt5rFmBX3SDz9SmDDh7xo2V-xve-yk8p_HPoBwXTPHRkT8Tvr30MSu6D2SiSsgbzJlCiQ8BxHjzuZU",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmEwMDQwNWI5MjcxMWU3NmFmNmE2NjVmMmI0ZDc5ZDQ1MTA1ZTBiYWI3NGI5ZWJlYTY2OWYxMjJlNWNjYzIxNDUwMWZhZmUzNDljOGI4MzQiLCJpYXQiOjE2OTA3OTA4NTUuMjY0OTM0LCJuYmYiOjE2OTA3OTA4NTUuMjY0OTQxLCJleHAiOjE3MjI0MTMyNTUuMTI4ODc0LCJzdWIiOiIyIiwic2NvcGVzIjpbInVzZXIiXX0.h7MVbhOYupZvFKnKN33C61N_YChiequ2lU_3DgWsV0V6sXiCzVf5S3eLSDOjyOrz4j3qlxdqCm3LFAOGlszIQpJdJHaZVHI8wUpoK7BXtFGIekD89Jl_Tku-Fs-rdAgSX6NAKIqsfR6kJvA0ahvm1LNkmrynWvZmO6mYNWV6dnOp7MzrRQc-7Cwn8gMx6A_PeMDK9rglkVtmNxmQb3BgvEAa2h2hVdDsKqkv9nx4ueujd6DgvFj6fBOAwsMLDmcg4eUib79VFP6gklFn85IiwL-vzp_eFZrQ_060AsWJR5EzDBqrlR2ZJViGzDQwP3Z82upgjpvyqdRGhrKon-FQW-dhq21FkJpWJwWcb9eGjWVEN9M5EjTJ4yDevBeSNOq815lDEdc-TbecHPhalegmzQj46v7-tcOZJdjGkJbXJnZFpH9mUt5K_-i6VT1F0m4_8yXlFMUYQn8GGzotKE_eM6lMEps37xfD0UldvNLCWu0JjHTuGCX3YE-imXNgaCrfoFTxwfUUTg58YpTfiodfqfmUuwUeLqzRZXvE29tmUTiZZ10njRc-hYJ0T-XbYj8VdXTD7tT8p-2cWys8Y_PLqOq91ithF7XiazJofT1CVgh0rHsCvihiE4B19x62rxaDLdwwO1Ut_scP04YmxMlelWiy4el78JgzXgjcHCIDsyI",
 									"type": "string"
 								}
 							]
@@ -2033,6 +2132,16 @@
 				{
 					"name": "remove_from_favorites",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWRmYzk5Y2Q0ZTA0NTNhMzBmZWVkZTJmOTU0NTIwMzZiNmM0MTRhYWFjM2M1Mjg5YzU0NjRjYzE1OTE4MDA1YzFjYzEyOGMwMmVmMzg3YjAiLCJpYXQiOjE2OTA3OTA0NjUuNzkwMDAxLCJuYmYiOjE2OTA3OTA0NjUuNzkwMDE2LCJleHAiOjE3MjI0MTI4NjUuNjkwMjc3LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.aq56Q-WhvGUb5Rk4xU8j2EMs6CGBcWQGHtalWxE-nJcbcPTDDGXtFiUAE4dVH7927_rw3pW8EM1XWKA-ZssffKM9W7PXTYM38_w-wQ9wfDOGErBN6EfkMaeTd9k1yrxvojv_xrR54wzvD6cI7wN40tyFu5qmr1BrnjSfUo1ns7J_EqraRTyPgT8tmNT9hheJhFNtEalC4ykBbynbKCLHIzVGrx247BgnMxfbWc304FEqIiggVOpRwge50JmXtmqAD2qv3gA8ecPmNtI6tscUB2WCaIlLyQFuVIskBiAhNnyQO4-M3Lp1zqEZBuO_1evKa6m0sXksOzq0WjEF5YVU6AMKpnX3yE-Ao0IwgIO3YVAWYpg9dd_ZQOQvLT6up9k_lHDD3nCO_sy0QR78ba_HLjCIq_VT3LTUaEUcziybX4cBa3dZ-vrwyvq8guqGpEGtjkYivoqJRFjK2LrVV4LmZ9BZNDAFxxF1bDvEZYgjZ7f5vCGld__1jZLM4GzuYMYlHePOBCl5L0quWCr5RArsSwTGhl_XvcQfyewoTefb9meytDYwfuAD0YCdbC7Tgw1Y5xuWWFqpWSttpWkj9JQpk2qSGXC_35lc7LSS91MFaCGidxwLnco9mV3c2EAw2I7B7aVFBs-1s5sbuzH1X6zsjNCL8CBXjhAiAiJCn7kMQkw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2047,7 +2156,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/user/remove_from_favorites/1",
+							"raw": "http://127.0.0.1:8000/api/user/remove_from_favorites/4",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -2060,7 +2169,7 @@
 								"api",
 								"user",
 								"remove_from_favorites",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -2069,6 +2178,16 @@
 				{
 					"name": "get_all_favorites",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWRmYzk5Y2Q0ZTA0NTNhMzBmZWVkZTJmOTU0NTIwMzZiNmM0MTRhYWFjM2M1Mjg5YzU0NjRjYzE1OTE4MDA1YzFjYzEyOGMwMmVmMzg3YjAiLCJpYXQiOjE2OTA3OTA0NjUuNzkwMDAxLCJuYmYiOjE2OTA3OTA0NjUuNzkwMDE2LCJleHAiOjE3MjI0MTI4NjUuNjkwMjc3LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.aq56Q-WhvGUb5Rk4xU8j2EMs6CGBcWQGHtalWxE-nJcbcPTDDGXtFiUAE4dVH7927_rw3pW8EM1XWKA-ZssffKM9W7PXTYM38_w-wQ9wfDOGErBN6EfkMaeTd9k1yrxvojv_xrR54wzvD6cI7wN40tyFu5qmr1BrnjSfUo1ns7J_EqraRTyPgT8tmNT9hheJhFNtEalC4ykBbynbKCLHIzVGrx247BgnMxfbWc304FEqIiggVOpRwge50JmXtmqAD2qv3gA8ecPmNtI6tscUB2WCaIlLyQFuVIskBiAhNnyQO4-M3Lp1zqEZBuO_1evKa6m0sXksOzq0WjEF5YVU6AMKpnX3yE-Ao0IwgIO3YVAWYpg9dd_ZQOQvLT6up9k_lHDD3nCO_sy0QR78ba_HLjCIq_VT3LTUaEUcziybX4cBa3dZ-vrwyvq8guqGpEGtjkYivoqJRFjK2LrVV4LmZ9BZNDAFxxF1bDvEZYgjZ7f5vCGld__1jZLM4GzuYMYlHePOBCl5L0quWCr5RArsSwTGhl_XvcQfyewoTefb9meytDYwfuAD0YCdbC7Tgw1Y5xuWWFqpWSttpWkj9JQpk2qSGXC_35lc7LSS91MFaCGidxwLnco9mV3c2EAw2I7B7aVFBs-1s5sbuzH1X6zsjNCL8CBXjhAiAiJCn7kMQkw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2205,7 +2324,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQ3ZTU4MWNlODUxYzgyYWNhYTJlMjAzY2Y5OTYzZmMwYzljMTFjYThlOWVjZmMzMzkzMWU3ODIxNGRiMDFiZmJjOWE5ZGFjMWJjNTc4NDciLCJpYXQiOjE2ODU3NDI2NzIuMTUzMzMxLCJuYmYiOjE2ODU3NDI2NzIuMTUzMzM5LCJleHAiOjE3MTczNjUwNzIuMDM0NjI2LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.TT8M0GTkKDhMw8dkzPa4W4BfH2F4I1uxc3Vve4meqT_RK3BPp7N1P5f9ZFKmOaQO9BBk4VELUHBiyWkxf67HKyeFTuv7liLftYywHpCfDni0mtvdZelkSszMRqTH96Sxk2wQAYfmslA9eisKANJdvlnxVamguT4Ph5Vz7ANj_v_-CMrDud131p_VQ7PV2SO2am1yYd96fS9MYe_S9N3l-2zaUCAWPQ_KeisxIOd8BQSWanoZnEvxVsh_rlFIDsuHTjSxX_LBtJ7fnrzdFtCpTA5_jWQVe-4WEu45KrQQ28heq_NzWAgVnj5zkoiZl8RD34ienys96wvWMNJ6oJVr4vFx8-JmvjzINeegVJV5z3Ac5i81_a00-U7of_yV_aGlnhIENz47SosUQVxDSO_Ox_8G9SIwSmxGC-tR9PSP3ekwtq3r1XrSYt73WdoBlWCib8M_0Tuypaf7CL5H0e6FyUj_qn59dTfCh7qb9gNQyVTLiCv9Vz3GQk-wDDWBp17RasiobURRETOx4WxvrXdu0_68Xmu97e1hjIHdXhAaiNNRkcQdtHJF728lG0TxYVqWCNDshMr3cjw-qQ36oDvbR1OJLqyann62eELX-vVz8Tci30HHN1vT2eMRh5nHih6D8g3RT8Ij4CNYzSHUqOAiXziGXizRfGuKAW2bLcXBbLs",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWQzMDk4MzQ4ZmYwMDFmMjI5ZGQzYTAwYzg1ZjI5ZmMxNjZjOWYwODY2MWFiYzFjYjA1MzZhYjEyNTdiZjliMjAzZGFiOWY1MGYxZWRiZTMiLCJpYXQiOjE2OTA3OTIzNzAuODc5NzY0LCJuYmYiOjE2OTA3OTIzNzAuODc5Nzc0LCJleHAiOjE3MjI0MTQ3NzAuNzM2NDE2LCJzdWIiOiIzIiwic2NvcGVzIjpbInVzZXIiXX0.YE6duQ0w-wBCRw311n6RNnYTM2ikiO1sIKTe3G_mf-5g3HEuIBvYMnF-Dvibc7ra_fauZqXGRiOhgz6FTQTc7G7RI43KJchh1kjQSldLc6upbPyuOuMsXG0v1nHUrFVwf1NebsNeGhSao0aVVhfA5bCSRrnLbOzAv028kK8BbbvRzI8_3fQmdN1hxJQTLZxH9-pKeEWLn6KCuCgDP0smX24Nck8kej1f5geC8WYz6Mz5r6w6ELK-GTTU8c1MNymNAx3D8adIkzvbf3C0nlMkC-XvbnQH_hBVxQypUiJSS9y6vrEiK2QnhSBX9Ldg4Vncea6YPFj4v-XW8J8y8zQ8O5bpv0i4pmvYDtqCgEuCN8YMPsqFdTE6qxVF7XO4sDovLlvNBcwPhoCpA6NtW1UavhKW7eP0iRw5nEmmxIfKcMq9engN1ylX1xEZE2_e5YTEFb79G4IpOEy4UZDEmIZXKW4HIN3bFoi98h9BaHgbw0x4GNzT_uHtjafPIUFKp5828ZaG1uvUgv-xXFsMxtzoAzO290UYHfa8vzIoWALmZ2GOb7eTtGt-_Mw-3tXz6W9BGhjHYfLqMGZzpiT8sVsn4w6xY1K2UqxVYabMQ9QKnD_ieOmMlgqFD_fDiTEA5h0pXSQdJvbpKxd5ciNGoj_9jjQ_ayDv06qv0ojIy8Mt0h4",
 									"type": "string"
 								}
 							]

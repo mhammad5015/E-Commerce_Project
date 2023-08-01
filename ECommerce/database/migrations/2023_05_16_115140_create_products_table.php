@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('name');
             $table->float('price');
             $table->text('description')->nullable();
-            $table->decimal('discount_percentage', 5, 2)->default(0);
+            $table->float('discount_percentage')->default(0);
             $table->boolean('approved')->default(false);
             $table->integer('product_quantity')->default(0);
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

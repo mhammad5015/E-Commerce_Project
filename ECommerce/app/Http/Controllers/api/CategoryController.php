@@ -142,9 +142,7 @@ class CategoryController extends Controller
             ->orWhere('_lft', '<', Category::whereIn('id', $categoryIds)->min('_lft'))
             ->orWhere('_rgt', '>', Category::whereIn('id', $categoryIds)->max('_rgt'))
             ->pluck('id');
-        $categories = Category::with(['products' => function ($query) use ($admin_id) {
-            $query->where('admin_id', $admin_id);
-        }])
+        $categories = Category::with('products.productImages')
             ->whereIn('id', $allCategoryIds)
             ->get()->toTree();
         return response()->json([

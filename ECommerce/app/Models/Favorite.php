@@ -11,4 +11,9 @@ class Favorite extends Model
 
     protected $fillable = ['product_id', 'user_id'];
     public $timestamps = false;
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

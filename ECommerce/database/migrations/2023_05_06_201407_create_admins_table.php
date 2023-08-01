@@ -26,7 +26,7 @@ return new class extends Migration
             $table->double('wallet')->default(0.0);
             $table->double('percentage')->default(0.0);
             $table->boolean('state')->default(false);
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

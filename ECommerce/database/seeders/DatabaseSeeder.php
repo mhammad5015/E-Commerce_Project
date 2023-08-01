@@ -20,22 +20,29 @@ class DatabaseSeeder extends Seeder
 
         // CREATE A SUPER ADMIN ACOUNT
         DB::table('super_admins')->insert([
-            'superadmin_name' => 'mhammad',
-            'email' => 'mhammad@gmail.com',
-            'password' => Hash::make('1234567890'),
+            [
+                'superadmin_name' => 'mhammad',
+                'email' => 'mhammad@gmail.com',
+                'password' => Hash::make('1234567890'),
+            ],
+            [
+                'superadmin_name' => 'leen',
+                'email' => 'leen@gmail.com',
+                'password' => Hash::make('1234567890'),
+            ]
         ]);
         // CREATE A ADMINs ACOUNT
         DB::table('admins')->insert([
             [
-                'company_name' => 'mhammad',
-                'email' => 'mh@gmail.com',
+                'company_name' => 'addidas',
+                'email' => 'addidas@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
                 'phone_number' => '9123456789',
                 'percentage' => 0.2,
             ], [
-                'company_name' => 'leen',
-                'email' => 'le@gmail.com',
+                'company_name' => 'nike',
+                'email' => 'nike@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
                 'phone_number' => '8193456789',
@@ -52,12 +59,17 @@ class DatabaseSeeder extends Seeder
         ]);
         // CREATE CONST SIZES
         DB::table('sizes')->insert([
-            ['size' => 'S'],
-            ['size' => 'M'],
-            ['size' => 'L'],
-            ['size' => 'XL'],
-            ['size' => 'XXL'],
-            ['size' => 'XXXL'],
+            ['size' => 'XS', 'type_id' => 1],
+            ['size' => 'S', 'type_id' => 1],
+            ['size' => 'M', 'type_id' => 1],
+            ['size' => 'L', 'type_id' => 1],
+            ['size' => 'XL', 'type_id' => 1],
+            ['size' => 'XXL', 'type_id' => 1],
+            ['size' => 'XXXL', 'type_id' => 1],
+        ]);
+        DB::table('types')->insert([
+            ['type' => 'international'],
+            ['type' => 'numeric'],
         ]);
     }
 }

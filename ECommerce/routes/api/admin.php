@@ -27,9 +27,8 @@ Route::post('product/add_tag/{product_id}', [ProductController::class, 'add_tag'
 Route::post('product/add_discount/{product_id}', [ProductController::class, 'add_discount']);
 
 Route::post('product/add_color', [ProductController::class, 'add_color']);
-Route::post('product/add_size', [ProductController::class, 'add_size']);
+Route::post('product/add_size/{type_id}', [ProductController::class, 'add_size']);
 Route::get('product/get_colors', [ProductController::class, 'get_colors']);
-Route::get('product/get_sizes', [ProductController::class, 'get_sizes']);
 
 Route::get('admin/get', [HomeController::class, 'getAllAdmins']);
 Route::post('admin/{id}', [HomeController::class, 'adminProfile']);
