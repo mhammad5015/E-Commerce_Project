@@ -125,7 +125,7 @@ class CategoryController extends Controller
         if (!isset($s)) {
             return response()->json([
                 'status' => 0,
-                'message' => 'the vendor have no products',
+                'message' => $s,
             ]);
         }
         $allCategoryIds = Category::whereIn('id', $categoryIds)
