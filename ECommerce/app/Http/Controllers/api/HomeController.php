@@ -7,6 +7,8 @@ use App\Models\Ad;
 use App\Models\Admin;
 use App\Models\Comment;
 use App\Models\Favorite;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Rate;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,6 +32,17 @@ class HomeController extends Controller
             'data' => $User
         ]);
     }
+
+    public function getUser()
+    {
+        $user = Auth::guard('user_api')->user();
+        $User = DB::table('users')->where('id', $user->id)->first();
+        return response()->json([
+            'status' => 1,
+            'data' => $User
+        ]);
+    }
+
 
     public function getAllAdmins()
     {
@@ -61,6 +74,13 @@ class HomeController extends Controller
             'Total of Admins is: ' => $Total_Admins,
         ]);
     }
+    public function ordersCount()
+    {
+        $Total_Orders = Order::count();
+        return response()->json([
+            'Total of Orders is: ' => $Total_Orders,
+        ]);
+    }
     public function getAdminWallet()
     {
         return response()->json([
@@ -77,29 +97,52 @@ class HomeController extends Controller
         ]);
         $admin = Admin::find($input['admin_id']);
         if ($admin) {
-            $ads = new Ad();
-            $imagePath = $request->file('image')->store('images', 'public');
-            $ads->image = 'storage/' . $imagePath;
             // 1
+            // $ads = new Ad();
             // $imageData = $request->input('image');
             // $imageBinary = base64_decode($imageData);
             // $filename = uniqid() . '.jpg';
             // Storage::disk('public')->put('images/',$filename, $imageBinary);
             // $ads->image = 'storage/images/' . $filename;
+            // $admin->adds()->save($ads);
             // 2
+            // $ads = new Ad();
             // $imageData = $request->input('image'); // unit8list
             // $binaryData = pack('C*', ...$imageData); // binary string
             // $filename = 'public/images/' .uniqid() . '.jpg'; // file name
             // file_put_contents($filename, $binaryData);
             // $ads->image = 'storage/images/' . $filename;
+            // $admin->adds()->save($ads);
             // 3
+            // $ads = new Ad();
             // $imageData = $request->input('image');
             // $imageBinary = base64_decode($imageData);
             // $imageName = uniqid();
             // $filePath = "images/{$imageName}.jpg";
             // Storage::disk('public')->put($filePath, $imageBinary);
             // $ads->image = 'storage/'.$filePath;
+            // $admin->adds()->save($ads);
             // 4
+            // $ads = new Ad();
+            // $image = $request->input('image');
+            // $filename = uniqid() . '.json';
+            // Storage::disk('public')->put('images/',$filename, $image);
+            // $ads->image = 'storage/images/' . $filename;
+            // $admin->adds()->save($ads);
+            // 5
+            //   $ads = new Ad();
+            //   $image = [
+            //       'image' => $request->input('image')
+            //   ];
+            //   $imageJson = json_encode($image);
+            //   $filename = uniqid() . '.json';
+            //   $path = 'public/images/' . $filename;
+            //   Storage::put($path, $imageJson);
+            //   $ads->image = str_replace('public/', 'storage/', $path);
+            //   $admin->adds()->save($ads);
+            $ads = new Ad();
+            $imagePath = $request->file('image')->store('images', 'public');
+            $ads->image = 'storage/' . $imagePath;
             $admin->adds()->save($ads);
             return response()->json([
                 'admin' => $admin,
@@ -262,6 +305,20 @@ class HomeController extends Controller
         return response()->json([
             'status' => 1,
             'data' => $comments
+        ]);
+    }
+
+    public function get_highest_sellcount()
+    {
+
+        $product = Product::where('approved', true)->orderBy('sell_count', 'desc')
+            ->limit(10)
+            ->with('admin', 'productImages')
+            ->get();
+
+        return response()->json([
+            'status' => 1,
+            'data' => $product
         ]);
     }
 }

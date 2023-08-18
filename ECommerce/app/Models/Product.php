@@ -12,7 +12,7 @@ class Product extends Model
     //protected $fillable = ['name', 'price', 'description', 'have_discount', 'approved', 'product_quantity'];
 
     protected $fillable = ['admin_id', 'category_id', 'name', 'price', 'description', 'have_discount', 'approved', 'product_quantity'];
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function pendingProduct()
     {
@@ -35,6 +35,11 @@ class Product extends Model
     public function admin()
     {
         return $this->belongsTo(Admin::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function variants()

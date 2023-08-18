@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\api\ProductController;
@@ -23,3 +24,5 @@ Route::post('product/search_admin_products/{admin_id}', [ProductController::clas
 Route::post('product/add_type', [ProductController::class, 'add_type']);
 Route::get('product/get_types', [ProductController::class, 'get_types']);
 Route::get('product/get_type_sizes/{type_id}', [ProductController::class, 'get_type_sizes']);
+Route::get('product/get_highest_sellcount', [HomeController::class, 'get_highest_sellcount']);
+

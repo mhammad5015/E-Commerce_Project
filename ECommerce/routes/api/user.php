@@ -31,7 +31,8 @@ Route::post('user/code/check', [AuthController::class, 'checkCode']);
 Route::post('user/password/reset', [AuthController::class, 'userResetPassword']);
 
 Route::get('user/get', [HomeController::class, 'getUsers']);
-Route::post('user/{id}', [HomeController::class, 'userProfile']);
+Route::get('user/userProfile/{id}', [HomeController::class, 'userProfile']);
+Route::get('user/getUser', [HomeController::class, 'getUser']);
 Route::get('user/usersCount', [HomeController::class, 'usersCount']);
 
 // Favorites
@@ -59,3 +60,5 @@ Route::get('user/get_cart_items', [ProductController::class, 'get_cart_items']);
 Route::get('user/confirm_order', [OrderController::class, 'confirm_order']);
 Route::get('user/check_items', [OrderController::class, 'check_items']);
 Route::get('user/get_user_orders', [OrderController::class, 'get_user_orders']);
+Route::get('user/ordersCount', [HomeController::class, 'ordersCount']);
+Route::get('user/Orders_History_for_all_users', [OrderController::class, 'Orders_History_for_all_users']);

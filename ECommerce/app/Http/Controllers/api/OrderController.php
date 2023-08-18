@@ -14,7 +14,9 @@ use App\Models\SuperAdmin;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -59,18 +61,22 @@ class OrderController extends Controller
                     $admin->wallet += ($orderItem->price) - ($super_admin->wallet);
                     $admin->save();
                 } else {
-                    $orderItem->price = ($product->discount_percentage) * ($orderItem->quantity);
+                    $new_Price = ($product->price) - ($product->price) * ($product->discount_percentage) / 100;
+                    $orderItem->price = ($new_Price) * ($orderItem->quantity);
                     $order->Total_Price += $orderItem->price;
                     $order->save();
-                    $super_admin->wallet += ($orderItem->price) * ($admin->percentage);
+                    $super_admin->wallet += ($orderItem->new_Price) * ($admin->percentage);
                     $super_admin->save();
-                    $admin->wallet += ($orderItem->price) - ($super_admin->wallet);
+                    $admin->wallet += ($orderItem->new_Price) - ($super_admin->wallet);
                     $admin->save();
                 }
                 $orderItem->save();
                 // Decrement variant quantity
                 $variant->variant_quantity -= $variantCart->quantity;
+                $product->product_quantity -= $variantCart->quantity;
+                $product->sell_count += $variantCart->quantity;
                 $variant->save();
+                $product->save();
             } else {
                 $unavailable_items[] = $product->name;
             }
@@ -95,13 +101,11 @@ class OrderController extends Controller
         }
         return response()->json([
             'status' => 1,
-            'message' => 'The order confirmed successfully, The Total Price is : ' . $order->Total_Price,
+            'message' => 'The order confirmed successfully ',
+            'price' => $order->Total_Price,
         ]);
     }
 
-    public function product_order($variant_id)
-    {
-    }
 
 
     public function check_items()
@@ -132,7 +136,8 @@ class OrderController extends Controller
                 if ($product->discount_percentage == 0) {
                     $total_price += ($product->price) * ($variantCart->quantity);
                 } else {
-                    $total_price += ($product->discount_percentage) * ($variantCart->quantity);
+                    $new_Price = ($product->price) - ($product->price) * ($product->discount_percentage) / 100;
+                    $total_price += ($new_Price) * ($variantCart->quantity);
                 }
             }
         }
@@ -152,7 +157,8 @@ class OrderController extends Controller
         }
         return response()->json([
             'status' => 1,
-            'message' => 'All the item is available , you can confirmed your order,the Total Price is :' . $total_price,
+            'message' => 'All the item is available , you can confirmed your order',
+            'price' => $total_price,
         ]);
     }
 
@@ -160,7 +166,7 @@ class OrderController extends Controller
     {
         $user = Auth::guard('user_api')->user();
         $user = User::find($user->id);
-        return $user->orders()
+        $orders= $user->orders()
             ->with(['orderItems' => function ($query) {
                 $query->with(['variant' => function ($query) {
                     $query->with(['product', 'color', 'size']);
@@ -168,5 +174,51 @@ class OrderController extends Controller
             }, 'orderItems.variant.product.productImages'])
             //,'product.productImages','product.productTags','product.productVariants'])
             ->get();
+        return response()->json([
+            'status' => 1,
+            'data' => $orders,
+        ]);
+
     }
+
+    public function Orders_History_for_all_users()
+    {
+        $order = Order::with(['user', 'orderItems' => function ($query) {
+            $query->with(['variant' => function ($query) {
+                $query->with(['product', 'color', 'size']);
+            }]);
+        }, 'orderItems.variant.product.productImages'])
+            ->whereYear('created_at', date('Y'))
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return response()->json([
+            'status' => 1,
+            'data' => $order
+        ]);
+    }
+
+
+public function updateState(Request $request,$order_id){
+$request->validate([
+    'state'=>'required|boolean',
+]);
+$order=Order::where('id',$order_id);
+
+if (!isset($order)) {
+    return response()->json([
+        'status' => 0,
+        'message' => 'there is no order with this id '
+    ]);
+}
+$order->update(['state' => $request->state]);
+
+
+return response()->json([
+    'status' => 1,
+    'message' => 'order completed successfully'
+
+]);
+}
+
+
 }

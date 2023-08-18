@@ -23,18 +23,21 @@ class CategoryController extends Controller
 
     public function get_all_categories_with_produts()
     {
-        $category = Category::with('products.admin','products.productImages','products.productTags','products.productVariants')
+        $category = Category::with(['products' => function ($query) {
+            $query->where('approved', 1);
+        }, 'products.admin', 'products.productImages', 'products.productTags', 'products.productVariants'])
             ->get()
             ->toTree();
-        if(!isset($category)){
+
+        if (!isset($category)) {
             return response()->json([
-                'status'=> 0,
+                'status' => 0,
                 'data' => $category
             ]);
         }
         return response()->json([
-            'status'=>1,
-            'data'=> $category
+            'status' => 1,
+            'data' => $category
         ]);
     }
 
@@ -107,47 +110,37 @@ class CategoryController extends Controller
     ///////////////////////////////////////////////////
 
 
-
-    public function get_category_withProduct_Admin($admin_id)
-    {
-        $admin = Admin::find($admin_id);
-        //  $categoriesWithProducts =$admin->categoriesWithProducts->toTree()->first();
-        $categories = Category::whereHas('products', function ($query) use ($admin_id) {
-            $query->where('admin_id', $admin_id);
-        })
-            ->with(['products' => function ($query) use ($admin_id) {
-                $query->where('admin_id', $admin_id);
-            }])
-            ->with('ancestors')
-            ->get()->toTree();
-        return [
-            'Company name is: ' => $admin->company_name,
-            'The category With Products: ' =>  $categories,
-        ];
-    }
-
-
     public function get_Categories_WithProductsForAdmin($admin_id)
     {
+        $exists = Admin::where('id', $admin_id)->exists();
+        if(!$exists){
+            return response()->json([
+                'status' => 0,
+                'message' => 'there is no vendor with this id',
+            ]);
+        }
         $categoryIds = Product::where('admin_id', $admin_id)
-        ->pluck('category_id');
+            ->pluck('category_id');
         $s = Product::where('admin_id', $admin_id)->first();
         if (!isset($s)) {
             return response()->json([
-                'status'=> 0,
-                'message' => 'there is no categories to show'
+                'status' => 0,
+                'message' => 'the vendor have no products',
             ]);
         }
-            $allCategoryIds = Category::whereIn('id', $categoryIds)
+        $allCategoryIds = Category::whereIn('id', $categoryIds)
             ->orWhere('_lft', '<', Category::whereIn('id', $categoryIds)->min('_lft'))
             ->orWhere('_rgt', '>', Category::whereIn('id', $categoryIds)->max('_rgt'))
             ->pluck('id');
-        $categories = Category::with('products.productImages')
+
+        $categories = Category::with(['products' => function ($query) use ($admin_id) {
+            $query->where('admin_id', $admin_id)->where('approved', 1);
+        }, 'products.productImages'])
             ->whereIn('id', $allCategoryIds)
             ->get()->toTree();
         return response()->json([
-            'status'=> 1,
-            'data'=>$categories
+            'status' => 1,
+            'data' => $categories
         ]);
     }
 
@@ -161,20 +154,26 @@ class CategoryController extends Controller
 
     public function getAllChildren()
     {
-    $children = DB::table('categories')
-                    ->whereNotNull('parent_id')
-                    ->get();
-    $null = Category::where("parent_id", NULL)->first();
-    if (!isset($null)) {
+        // $children = DB::table('categories')
+        //     ->whereNotNull('parent_id')
+        //     ->get();
+        $children = DB::table('categories as c')
+            ->Join('categories as p', 'c.parent_id', '=', 'p.id')
+            ->select('c.*', 'p.name as parent_name')
+            ->whereNotNull('c.parent_id')
+            ->get();
+
+        $null = Category::where("parent_id", NULL)->first();
+
+        if (!isset($null)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'there is no category to show'
+            ]);
+        }
         return response()->json([
-           'status'=> 0,
-           'message' => 'there is no category to show'
+            'status' => 1,
+            'data' => $children
         ]);
     }
-    return response()->json([
-            'status'=> 1,
-            'data'=>$children
-    ]);
-    }
-
 }

@@ -27,17 +27,15 @@ class ProductController extends Controller
     // add product
     public function add_product(Request $request, $category_id)
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'price' => 'required',
-                'description',
-                'discount_percentage',
-                'product_image.*' => 'required|image|mimes:jpeg,png,gif,bmp,jpg,svg',
-                'tag' => 'array',
-                'variants' => 'required|array'
-            ],
-        );
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'description',
+            'discount_percentage',
+            'product_image.*' => 'required|image|mimes:jpeg,png,gif,bmp,jpg,svg',
+            'tag' => 'array',
+            'variants' => 'required|array'
+        ]);
         $admin = Auth::guard('admin_api')->user();
         $product = new Product();
         $product->admin_id = $admin->id;
@@ -49,7 +47,6 @@ class ProductController extends Controller
         }
         $product->description = $request->description;
         $product->save();
-
         $pendingProduct = new PendingProduct();
         $pendingProduct->product_id = $product->id;
         $pendingProduct->save();
@@ -96,12 +93,8 @@ class ProductController extends Controller
         foreach ($request->variants as $variant1) {
             $variant = new Variant();
             $variant->product_id = $product->id;
-            if (isset($variant1['color_id'])) {
-                $variant->color_id = $variant1['color_id'];
-            }
-            if (isset($variant1['size_id'])) {
-                $variant->size_id = $variant1['size_id'];
-            }
+            $variant->color_id = $variant1['color_id'];
+            $variant->size_id = $variant1['size_id'];
             $variant->variant_quantity = $variant1['variant_quantity'];
             $product->product_quantity += $variant1['variant_quantity'];
             $product->save();
@@ -112,6 +105,36 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'product_data' => $data,
+        ]);
+    }
+
+    public function add_variants(Request $request, $product_id)
+    {
+        $request->validate([
+            'variants' => 'required|array',
+        ]);
+        $product = Product::where('id', $product_id)->first();
+        foreach ($request->variants as $variant1) {
+            $v = Variant::where('product_id', $product_id)->where('color_id', $variant1['color_id'])->where('size_id', $variant1['size_id'])->first();
+            if (isset($v)) {
+                $v->variant_quantity += $variant1['variant_quantity'];
+                $product->product_quantity += $variant1['variant_quantity'];
+                $product->save();
+                $v->save();
+            } else {
+                $variant = new Variant();
+                $variant->product_id = $product_id;
+                $variant->color_id = $variant1['color_id'];
+                $variant->size_id = $variant1['size_id'];
+                $variant->variant_quantity = $variant1['variant_quantity'];
+                $product->product_quantity += $variant1['variant_quantity'];
+                $product->save();
+                $variant->save();
+            }
+        }
+        return response()->json([
+            'status' => 1,
+            'message' => 'Variants added successfully',
         ]);
     }
 
@@ -171,6 +194,29 @@ class ProductController extends Controller
         ]);
     }
 
+    // get all tags
+    public function get_all_tags()
+    {
+        $tags = Tag::get();
+        return response()->json([
+            'tags' => $tags
+        ]);
+    }
+    public function get_tag_products($tag_id)
+    {
+        $products_tag = Product_tag::where('tag_id', $tag_id)->with('product.productImages')
+            ->whereHas('product', function ($query) {
+                $query->where('approved', 1);
+            })->get();
+        $products =  $products_tag->map(function ($product) {
+            return $product->product;
+        });
+        return response()->json([
+            'status' => 1,
+            'tag_products' => $products,
+        ]);
+    }
+
     // delete product
     public function delete_product($product_id)
     {
@@ -184,7 +230,7 @@ class ProductController extends Controller
     // product profile
     public function product_profile($product_id)
     {
-        $product = Product::with('productImages', 'productTags.tag', 'productVariants.size','productVariants.color')->find($product_id);
+        $product = Product::with('productImages', 'productTags.tag', 'productVariants.size', 'productVariants.color')->find($product_id);
         return response()->json([
             'product' => $product
         ]);
@@ -217,22 +263,86 @@ class ProductController extends Controller
     // get pending products
     public function get_pending_products()
     {
-        $pendingProducts = PendingProduct::with('product')->get();
+        $pendingProducts = PendingProduct::with('product.productImages')->get();
+        $data = $pendingProducts->map(function ($pd) {
+            return [
+                'id' => $pd->id,
+                'product_id' => $pd->product_id,
+                'product' => [
+                    'id' => $pd->product->id,
+                    'admin_id' => $pd->product->admin_id,
+                    'category_id' => $pd->product->category_id,
+                    'company_name' => $pd->product->admin->company_name,
+                    'category_name' => $pd->product->category->name,
+                    'name' => $pd->product->name,
+                    'price' => $pd->product->price,
+                    'description' => $pd->product->description,
+                    'discount_percentage' => $pd->product->discount_percentage,
+                    'approved' => $pd->product->approved,
+                    'product_quantity' => $pd->product->product_quantity,
+                    'sell_count' => $pd->product->sell_count,
+                    'product_images' => $pd->product->productImages,
+                ],
+            ];
+        });
         return response()->json([
-            'pendingProducts' => $pendingProducts
+            'pendingProducts' => $data
         ]);
     }
 
     // get all products
     public function get_all_products()
     {
-        $products = Product::with('productImages', 'productTags', 'productVariants')->where('approved', true)->get();
+        $products = Product::with('productImages')->where('approved', true)->get();
+        $data = $products->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'admin_id' => $product->admin_id,
+                'category_id' => $product->category_id,
+                'company_name' => $product->admin->company_name,
+                'category_name' => $product->category->name,
+                'name' => $product->name,
+                'price' => $product->price,
+                'description' => $product->description,
+                'discount_percentage' => $product->discount_percentage,
+                'approved' => $product->approved,
+                'product_quantity' => $product->product_quantity,
+                'sell_count' => $product->sell_count,
+                'product_images' => $product->productImages,
+            ];
+        });
         return response()->json([
             'status' => 1,
-            'products' => $products
+            'products' => $data
         ]);
     }
 
+    // get admin products
+    public function get_admin_products($admin_id)
+    {
+        $products = Product::where('admin_id', $admin_id)->where('approved', true)->with('productImages')->get();
+        $data = $products->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'admin_id' => $product->admin_id,
+                'category_id' => $product->category_id,
+                'company_name' => $product->admin->company_name,
+                'category_name' => $product->category->name,
+                'name' => $product->name,
+                'price' => $product->price,
+                'description' => $product->description,
+                'discount_percentage' => $product->discount_percentage,
+                'approved' => $product->approved,
+                'product_quantity' => $product->product_quantity,
+                'sell_count' => $product->sell_count,
+                'product_images' => $product->productImages,
+            ];
+        });
+        return response()->json([
+            'status' => 1,
+            'products' => $data
+        ]);
+    }
 
     // add color
     public function add_color(Request $request)
@@ -491,8 +601,8 @@ class ProductController extends Controller
             ]);
         }
         if ($request->serched_product !== null) {
-            if (Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->exists()) {
-                $products = Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->get(['id']);
+            if (Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved', 1)->exists()) {
+                $products = Product::where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved', 1)->get(['id']);
                 $data = [];
                 foreach ($products as $item) {
                     $data[] = Product::with('productImages')->find($item->id);
@@ -521,8 +631,8 @@ class ProductController extends Controller
     public function search_admin_products(Request $request, $admin_id)
     {
         if ($request->serched_product !== null) {
-            if (Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->exists()) {
-                $products = Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved',1)->get(['id']);
+            if (Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved', 1)->exists()) {
+                $products = Product::where('admin_id', $admin_id)->where('name', 'LIKE', '%' . $request->serched_product . '%')->where('approved', 1)->get(['id']);
                 $data = [];
                 foreach ($products as $item) {
                     $data[] = Product::with('productImages')->find($item->id);

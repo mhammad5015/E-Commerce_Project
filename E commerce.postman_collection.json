@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e80e3e0b-a534-4ee8-af1e-251b75485cd4",
+		"_postman_id": "df60f158-7f96-4edc-959f-f9fa8e9c614c",
 		"name": "E commerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -436,7 +436,7 @@
 								},
 								{
 									"key": "email",
-									"value": "ad@gmail.com",
+									"value": "ad6@gmail.com",
 									"type": "default"
 								},
 								{
@@ -451,19 +451,13 @@
 								},
 								{
 									"key": "phone_number",
-									"value": "0987675641",
+									"value": "0987675647",
 									"type": "default"
 								},
 								{
 									"key": "logo",
 									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
-								},
-								{
-									"key": "",
-									"type": "file",
-									"src": [],
-									"disabled": true
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/coding wallpaper 005 - 1600x1200-768x576.png"
 								},
 								{
 									"key": "address[]",
@@ -476,14 +470,21 @@
 									"type": "default"
 								},
 								{
-									"key": "description",
-									"value": "this is description",
-									"type": "default"
-								},
-								{
 									"key": "percentage",
 									"value": "0.2",
 									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "this is description",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -590,9 +591,40 @@
 					"response": []
 				},
 				{
+					"name": "get all admins ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/get",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get user with id",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -601,7 +633,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/user/1",
+							"raw": "localhost:8000/api/user/userProfile/1",
 							"host": [
 								"localhost"
 							],
@@ -609,6 +641,34 @@
 							"path": [
 								"api",
 								"user",
+								"userProfile",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get admin with id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/admin/adminProfile/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"adminProfile",
 								"1"
 							]
 						}
@@ -642,63 +702,6 @@
 					"response": []
 				},
 				{
-					"name": "get all admins ",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/get",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"get"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get admin with id",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:8000/api/admin/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"admin",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "admins Count",
 					"request": {
 						"method": "GET",
@@ -725,7 +728,7 @@
 					"response": []
 				},
 				{
-					"name": "get Admin Wallet",
+					"name": "get Admins Wallet",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -745,6 +748,100 @@
 								"api",
 								"admin",
 								"getAdminWallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_highest_Sell Count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/product/get_highest_sellcount",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"get_highest_sellcount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Orders Count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/user/ordersCount?=",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"ordersCount"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser with auth",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDc1ZjhhNTg5ZGRmODEwNWNkY2M1MmViNGEyMmIzZjkxMWRmZmQ0NmQwNDExZWUxNmQ1N2JhNmY3NjQwMzkyNThkOTdjMzMwNDY5OGQ2YzkiLCJpYXQiOjE2OTIwNTkyNTEuNzA0MDQyLCJuYmYiOjE2OTIwNTkyNTEuNzA0MDUzLCJleHAiOjE3MjM2ODE2NTEuNjk1MDYzLCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.hHHiuFBqUGe6hXSJniFCdt1HRhMgEs5E7zmsT0Y8tXxfn-OIq2dA_8-hhu5oaWE6iaS2AQckJC_It-paQzj0A1vVwnSCrRl1ykh2kIKymp2s-RY1DvKUbF6wnDtEoSHQPi1GJIuOutZhOHq7eQDiVI156iN8j7NFCNFhksS3CUWHlfTog8OOuO5_YGdYQi46zUThcUMP-7fvECyajNxU6cN29jV_v-aoMJiVkaVAs54dcEvhEpn8mVeYEvKFo8VdYPv5JXNEaV6xibdxOSoqwpmuQJN1EMc5Lk-XB8pu12R9i1KqnWhfxDneAz_TroOe2-kQr7d5U-3x9BJMd0h5oY8im3hh0wmQTVYMwhKDzVJJ4yDrTQ0kXsEFIWrcK8jxbjbWjM9tDFSg4l3Mur15N58Lp51r6UOUvsXp3oa91P81VIJ_-Qg09dAsVlEsXwzUo0H6vHWsO1nKuxyleU5PBbNQb43dQu3fVK7aL8w-V32m9osKsJfTZdKK_tqx7j69vz3CkzLBKwesqymcWVk0MgbceWfOqkQJIlOUIseQ2NIVzr3cVJFNoPoyk2uZ3xuanE1m5fWuxUIGpoYDInrvb6izrGB00ooOrAeut10xj2US-pfcTHB1bd7Volw8zHvvbbdmdwjnZ33b-7BqAl1pONNlZqN8g0gKaD8Hzi7j7lw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/user/getUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"getUser"
 							]
 						}
 					},
@@ -771,7 +868,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "cloth3",
+									"value": "clothe3",
 									"type": "text"
 								},
 								{
@@ -918,7 +1015,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/admin/get_category_productForAdmin/1",
+							"raw": "localhost:8000/api/admin/get_category_productForAdmin/2",
 							"host": [
 								"localhost"
 							],
@@ -927,7 +1024,7 @@
 								"api",
 								"admin",
 								"get_category_productForAdmin",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -1008,7 +1105,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjM0MzZkNjVmOTQzY2U0Zjg4MDg3NTgzNTc4NDdkMzc4ZmExNjgxNjk2Y2NmM2YwNGY3ZmE0NTA0MjQ3MTdlYzE0NjEzYmZlYmQwOGRlOWYiLCJpYXQiOjE2OTA3ODk5ODguMjM3MTM2LCJuYmYiOjE2OTA3ODk5ODguMjM3MTQ5LCJleHAiOjE3MjI0MTIzODguMTQwNDg1LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.LAWfsN22nFt6WGXWcoctMrgEhVSwHEMPiO7Bci_Wx0KGeTMOGDCI52hznDpi_vNwT-NbxzZGGPpPcOI9aFDaa7P5jSV54bHfnQBawbcfUGWNW4wzZw-yjFW2AXSi9YeDV_Vkn00s94l9jGlYl_ssxFpBjC31t-_c_3ZE_5Q2WXBL-7gCfLl-uzp-c8ufRxuoQTNk1zKt8W_S2KnK9qbjTBp4VXn9fOTdhzDC3ys6q2HQ7l1UlisCZnZMRRm6Wi_QTEKolU9b4JepXv4OvLJZEMdQMt1xmgDbPsEldClYbPLOehMY7obiWCk7oe4tdfsXXDsikkgxyxdN0BRNa9gK6jXeyc29mmyGEpJARMoFDL8cAQBh9srHvWqap3cWsik1oxQyeUJab_bzjkohcpNXmaoUf1cbdzwYFLGjh5YpBnoxkqZ5qvZsK4Vg4ZomSxGGggoBpQg2pJoscT5PcC1Iunp4kIqNDweN0ycMe2j7_p1tg-nv-JYi3H3OsTVzyGHivODk4rxwuRQvs52vDYlyx5OqWHHKBkbe7rqQuk31eOJJEXSlzyJlSziLRyB9jhGzPQkGHUCBdfJ3d_oaoVXxn7vFE0pWfn8jInpOaT3FEIdJXORLaWKapiKz5euF0SAMeMvcuEFA6YNbwZXvW8pa_IwULRniep01inANRNbX9KY",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjViMTAzOGEwNmVkNTJiNGRjMWU2ODFlOTVkMzk0MjZmZWViMTA3YTUzYjNhNmM3YmVjMjY5MjBkMTc2ODE3NzNmZTVmNGI0NmNmY2JlZTYiLCJpYXQiOjE2OTIzMDg0NDkuNjM5MzQzLCJuYmYiOjE2OTIzMDg0NDkuNjM5MzUxLCJleHAiOjE3MjM5MzA4NDkuNTExNzE1LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.i_Zi9h2EudpxNz-hnuNO-iNWR6cfP1cMmnKrUvO-KgC2Ah1LzWZtiMoCUgF06puHv5CX8V1iz-NTKb9upVHYghqm4JS6Bwp_kDzzhOv67v0WKl6oJQwT3Z54hxv3xcSEd56uw_7qcFaG5zl7LSvs9UYmN5zdXjsZKOsb1g1wEAgz01KqwMiIa4X4eO57IUFxrXXH3Kl4VfMG4dv5ywAv5ypSzgwnAYUnoziK_Df6TlqBsf-jgAZXy9vS3Kk4jNRSJQ-CxXBs07iR61qBmZEMO_jLeWjcjDPQ6VolYua4m4ywn4LhD4ownsKvxjbzUQ-icqYaQIHSPIrKfHxNFfIbt0gVqPGkHTwnQBwrDE1acsPHbr0S3f7hfU7YrUxs5MFT6xVdiNd5dUlXz2FdpPl5-Cr7qRlSzusP2jWhvn5SNCFEiA4Ku6VvAELxWdgDO0l2gH63ra4iOW-eKE4xnjZu7rgx3A34rRyuxpwNLf6Oy7inUVXrThZW0jdn7VH2hhUrzEpYFVDnBJZ0RtzeYLk5oD2TrAKvUoB3ZRWAPSZwGxg7kjJJVr-TYP4jBh_nq1gmT6m3JLqNPxZDxD6ydOjHHhn875fXadKgAv1sXBAHwNt0_HPyWYRR-IhNTnVbMMuviFi5H2OmVkGAdE1NAZ5n1nnV5YLY-HsIFQrfjuH9ZGw",
 											"type": "string"
 										}
 									]
@@ -1047,7 +1144,7 @@
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/17cd4124e87c4b30a5fecf2605d86b6b.jpg"
 										},
 										{
 											"key": "tag[]",
@@ -1072,7 +1169,7 @@
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+											"src": "/C:/Users/mhamm/Pictures/wallpaper/17cd4124e87c4b30a5fecf2605d86b6b.jpg"
 										},
 										{
 											"key": "variants[0][color_id]",
@@ -1119,7 +1216,7 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8000/api/product/add_product/3",
+									"raw": "localhost:8000/api/product/add_product/1",
 									"host": [
 										"localhost"
 									],
@@ -1128,7 +1225,7 @@
 										"api",
 										"product",
 										"add_product",
-										"3"
+										"1"
 									]
 								}
 							},
@@ -1183,8 +1280,19 @@
 									}
 								],
 								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"product_id\":3,\r\n    \"approved\":true\r\n}"
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "approved",
+											"value": "1",
+											"type": "text"
+										}
+									]
 								},
 								"url": {
 									"raw": "localhost:8000/api/product/aprove_product",
@@ -1296,9 +1404,9 @@
 							"response": []
 						},
 						{
-							"name": "add_tag",
+							"name": "get_admin_products",
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
@@ -1311,30 +1419,16 @@
 										"type": "default"
 									}
 								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "tag",
-											"value": "fire Tshirt",
-											"type": "default"
-										}
-									]
-								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/product/add_tag/1",
-									"protocol": "http",
+									"raw": "localhost:8000/api/product/get_admin_products/1",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"localhost"
 									],
 									"port": "8000",
 									"path": [
 										"api",
 										"product",
-										"add_tag",
+										"get_admin_products",
 										"1"
 									]
 								}
@@ -1621,6 +1715,215 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "add_variants",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWVkYWIzOTgyNzEyZTk3YjkwZDgzYzY3NDBjOTgwOGU0NzIzMThjODY5M2FlZGZhYjA3MzI5ODQyM2VkNzRjYTVkMzU1N2I1NDQ0NDRkNDQiLCJpYXQiOjE2OTE2NTk4MjQuOTIzOTQ0LCJuYmYiOjE2OTE2NTk4MjQuOTIzOTU0LCJleHAiOjE3MjMyODIyMjQuMzczNzQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.rzXUdBl3C92xZihN6saSuZKOb3WRL0vzW8lAcLCkpd2hthBql4y_O9KlRktrwAZmZhGi20N1t0RwzXbX4mXxwKkSU_I5SHxezE3VVYN4u8ABNR6FJGdW5ITljJPOmsUwVLv1U_jtbUGKI9_PXOtootz-9WWoNk0YcGJmgkbeHKHVRqTcqNUHYWjGeSD-dphT1RnjYoUPi0rYXoHB2vzSnVCo3hZw10djFL-TTAjpfSzqvfyOY1W329EtpZnuJm9mzW3NQCfEKYsCwnLb-YUL0xbjuP8wzWQ1YJ7BbmCzuaoeKJNaYPrfnzb6_YJGUIdcDVtxaWmKhIyPN4d3YPyeFDGQilGMwlKSfhrqZlJaglRBtP5Z8IdP2E95czKges-p9LdH4dhwTgr1k-BlPQcvPEcD07iFJ-mshnwhgjoaz12oeEz1-dqFRYvyPpmc563o4DLAEbLJsTnkHBOgFlf5p6q8kPVKPx_qge9MYhmWsR0UQR48QDxIikoDf22V5PY0ayiwakb6ilhZNZc5nVgGO9G67OKEpD8UOnFu3I2_ocP7SWk-SLj7wFeAhx2fbEhFfwxS4XB2n6qkf2Bl2o7fDBYjFdNMyuj7Ad4fWwEfcBYss9TNRLCXnNiTW7iXzm3etfUvk7369dXyGz0xNsNEg4hT3PvkudxtG9Us4qsHOec",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "variants[0][color_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "variants[0][size_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "variants[0][variant_quantity]",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "variants[1][color_id]",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "variants[1][size_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "variants[1][variant_quantity]",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/api/product/add_variants/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_variants",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "tag",
+					"item": [
+						{
+							"name": "add_tag",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "tag",
+											"value": "fire Tshirt",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/product/add_tag/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"add_tag",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_tag_products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/product/get_tag_products/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_tag_products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_all_tags",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/api/product/get_all_tags",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"product",
+										"get_all_tags"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1635,7 +1938,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmE1MDNmZWIyOTdjZTA4YTFhYjVkNjE2OTJiYmYzZDQwMTMxNzc2ZjMwMWRjMDczMzAwNWUyZjRiNzQ3YmM1MTdlZWI5NTVlNDRiNzYyNjUiLCJpYXQiOjE2OTA3OTM1NzkuNzkyNTc3LCJuYmYiOjE2OTA3OTM1NzkuNzkyNTg2LCJleHAiOjE3MjI0MTU5NzkuNjc2Mzg5LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.O8Xevjr3cCXr81IYYTTkyixYH4eKu3Q4Qrpo-eHxYgOfoH1qrx0aS6nY3AXBwx5Xf8lYXtA3MG8CcG1lAgN-o1hNHibd4m0SOlxKmyg_J7EthDPa3PcdCML2RRmargq-0WzHWcj3azZigNaflubi6rHuUQN8iUYlOfAE5hjyVzn8GlOefMLB1Ig4vgcCstUxYdgn4axri5S-xKV3iTtIE7CGjBEs8B1N0ry2V1h1nvslGLCRfOf6ZH2wjHEgLoZFXpcHoB-a_IUYMgy-DYg7SiinMu7DlK1h8u4_rhmNcMUD-fYtFmxPT76-NEGFNVHG7yHwjdhCVNuPSiRAEHI0hqmWQEn5zg8X0Ux26HlN4eXZahHEah30C-rV7XNTwjYPRSdlc5OvOm1ip_bS1UycWSOJXgCsTDEhTJku61c7FVk66BX0UYj9vFcWFE3_48Zq-hEtQuVxb3wMPlqOWt1ShtS1FkMMAKw3-KHBDAJQ5xcalm6k9OWfQYnnPh7ENky143ED2lLHq9yk0QpKCT0w2KUsbeu_KyakVdem9yGvLme1H0nxg5u97E6BFqU1jfdUtSA5jrJE1sVhOkZSQvnetlSiqtgTfBV9xyECWSaXhEVnH7ac9KcmJGSYIQpXP-ZfhL4bdB-zH5J_OyZnvL9o-l6b9lGShtnRLsN-umLoZlk",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWY2YTgxNjNiZjRlMTBjMzQ3OTQ4YzAwZGIwYmUyNDc5OTljNTcwNWMzNzhkNWFiOGQ0YWFjOGQ0ZTY0MmNhZGRmNzExNDIxNTMwZTUzZTAiLCJpYXQiOjE2OTE5MjQyMDMuMjMzNTAyLCJuYmYiOjE2OTE5MjQyMDMuMjMzNTQ3LCJleHAiOjE3MjM1NDY2MDMuMDk5MDc1LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.KA2VDHLelA2_aEphf2Cv-uRefIPhNiMzgvYTDrDALcfdlyvqh7wnBVaJKOQZ6SrRJ6v0C2UlkTEMUOgBJFN96aqNPzmlTSt8W9FukrtOuYFKuVL8AU7r9DEyXTco6Ar8UUFuMLbiOfaArKPqd_nj0A5tBfOyEQz8puWWZg_aoNopl3h6KExE8YhJUMMAcBkocWDJ5tlsTtK9WUYRn34tPx3EYYpW6ew17ly6BkahWkdcIMCd3NMb7ebIe18gfmrhXa4SgMU2yVDEXb_2iHFJACXhdOEUDr58chmp2F03tsB97DFdYl801vRtY0oEd4z-2GuIM9fluFlYwnvtWQdCT0gmY8SOmMj29rXEl836enInkYUF5qhkEo3dzgevuKRavFsoQzhq5PZiSexc2YAVY511UOuzHJBa1gt3CoyaFNSeA8sA-wzAfaIRKQ2DCzboJS9TUrLMdEcgDMJZpEff-VbVSPKAxPuPIAXbveWgzFLzWW3XnzMk8mreLRHN2_XKpyxFF3KvF4OVzgZQaCVhhiW_Mw0vls-H-xYCrjVPgn0TSHn9R_9Dj_8DapalqMPRAXWKyAcxrNNbTP0gIkO0Y-dhfO3bFaFlC5S7oAt5SyLpFB3d4N8SwGcfaSXsrVrRuS0gzSwg3qbMPVQ4UqUbs6ocy6x-3y8h-6nN9mAUrHc",
 											"type": "string"
 										}
 									]
@@ -1664,7 +1967,7 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8000/api/user/add_to_cart/3",
+									"raw": "localhost:8000/api/user/add_to_cart/2",
 									"host": [
 										"localhost"
 									],
@@ -1673,7 +1976,7 @@
 										"api",
 										"user",
 										"add_to_cart",
-										"3"
+										"2"
 									]
 								}
 							},
@@ -1771,7 +2074,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmE1MDNmZWIyOTdjZTA4YTFhYjVkNjE2OTJiYmYzZDQwMTMxNzc2ZjMwMWRjMDczMzAwNWUyZjRiNzQ3YmM1MTdlZWI5NTVlNDRiNzYyNjUiLCJpYXQiOjE2OTA3OTM1NzkuNzkyNTc3LCJuYmYiOjE2OTA3OTM1NzkuNzkyNTg2LCJleHAiOjE3MjI0MTU5NzkuNjc2Mzg5LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.O8Xevjr3cCXr81IYYTTkyixYH4eKu3Q4Qrpo-eHxYgOfoH1qrx0aS6nY3AXBwx5Xf8lYXtA3MG8CcG1lAgN-o1hNHibd4m0SOlxKmyg_J7EthDPa3PcdCML2RRmargq-0WzHWcj3azZigNaflubi6rHuUQN8iUYlOfAE5hjyVzn8GlOefMLB1Ig4vgcCstUxYdgn4axri5S-xKV3iTtIE7CGjBEs8B1N0ry2V1h1nvslGLCRfOf6ZH2wjHEgLoZFXpcHoB-a_IUYMgy-DYg7SiinMu7DlK1h8u4_rhmNcMUD-fYtFmxPT76-NEGFNVHG7yHwjdhCVNuPSiRAEHI0hqmWQEn5zg8X0Ux26HlN4eXZahHEah30C-rV7XNTwjYPRSdlc5OvOm1ip_bS1UycWSOJXgCsTDEhTJku61c7FVk66BX0UYj9vFcWFE3_48Zq-hEtQuVxb3wMPlqOWt1ShtS1FkMMAKw3-KHBDAJQ5xcalm6k9OWfQYnnPh7ENky143ED2lLHq9yk0QpKCT0w2KUsbeu_KyakVdem9yGvLme1H0nxg5u97E6BFqU1jfdUtSA5jrJE1sVhOkZSQvnetlSiqtgTfBV9xyECWSaXhEVnH7ac9KcmJGSYIQpXP-ZfhL4bdB-zH5J_OyZnvL9o-l6b9lGShtnRLsN-umLoZlk",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWY2YTgxNjNiZjRlMTBjMzQ3OTQ4YzAwZGIwYmUyNDc5OTljNTcwNWMzNzhkNWFiOGQ0YWFjOGQ0ZTY0MmNhZGRmNzExNDIxNTMwZTUzZTAiLCJpYXQiOjE2OTE5MjQyMDMuMjMzNTAyLCJuYmYiOjE2OTE5MjQyMDMuMjMzNTQ3LCJleHAiOjE3MjM1NDY2MDMuMDk5MDc1LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzZXIiXX0.KA2VDHLelA2_aEphf2Cv-uRefIPhNiMzgvYTDrDALcfdlyvqh7wnBVaJKOQZ6SrRJ6v0C2UlkTEMUOgBJFN96aqNPzmlTSt8W9FukrtOuYFKuVL8AU7r9DEyXTco6Ar8UUFuMLbiOfaArKPqd_nj0A5tBfOyEQz8puWWZg_aoNopl3h6KExE8YhJUMMAcBkocWDJ5tlsTtK9WUYRn34tPx3EYYpW6ew17ly6BkahWkdcIMCd3NMb7ebIe18gfmrhXa4SgMU2yVDEXb_2iHFJACXhdOEUDr58chmp2F03tsB97DFdYl801vRtY0oEd4z-2GuIM9fluFlYwnvtWQdCT0gmY8SOmMj29rXEl836enInkYUF5qhkEo3dzgevuKRavFsoQzhq5PZiSexc2YAVY511UOuzHJBa1gt3CoyaFNSeA8sA-wzAfaIRKQ2DCzboJS9TUrLMdEcgDMJZpEff-VbVSPKAxPuPIAXbveWgzFLzWW3XnzMk8mreLRHN2_XKpyxFF3KvF4OVzgZQaCVhhiW_Mw0vls-H-xYCrjVPgn0TSHn9R_9Dj_8DapalqMPRAXWKyAcxrNNbTP0gIkO0Y-dhfO3bFaFlC5S7oAt5SyLpFB3d4N8SwGcfaSXsrVrRuS0gzSwg3qbMPVQ4UqUbs6ocy6x-3y8h-6nN9mAUrHc",
 											"type": "string"
 										}
 									]
@@ -2012,7 +2315,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/mhamm/Pictures/wallpaper/code-1366x768.jpg"
+									"src": "/C:/Users/mhamm/Pictures/wallpaper/17cd4124e87c4b30a5fecf2605d86b6b.jpg"
 								}
 							]
 						},
@@ -2568,6 +2871,69 @@
 								"api",
 								"user",
 								"get_user_orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Orders_History_for_all_users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/user/Orders_History_for_all_users",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"Orders_History_for_all_users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update State",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "state",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/super_admin/updateState/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"super_admin",
+								"updateState",
+								"1"
 							]
 						}
 					},

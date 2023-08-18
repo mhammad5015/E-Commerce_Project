@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\HomeController;
+use App\Http\Controllers\api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::get('super_admin/getAllChildren', [CategoryController::class, 'getAllChil
 Route::post('super_admin/create_ads', [HomeController::class, 'store_ad']);
 Route::delete('super_admin/delete_ads/{id}', [HomeController::class, 'delete_ads']);
 Route::get('super_admin/get_ads', [HomeController::class, 'get_ads']);
+///
+Route::post('super_admin/updateState/{order_id}', [OrderController::class, 'updateState']);

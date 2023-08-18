@@ -23,7 +23,8 @@ return new class extends Migration
             $table->float('discount_percentage')->default(0);
             $table->boolean('approved')->default(false);
             $table->integer('product_quantity')->default(0);
-            // $table->timestamps();
+            $table->integer('sell_count')->default(0);
+            $table->timestamps();
         });
     }
 

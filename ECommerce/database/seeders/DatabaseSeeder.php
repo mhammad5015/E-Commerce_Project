@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'addidas@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
+                'description' => 'this is description',
                 'phone_number' => '9123456789',
                 'percentage' => 0.2,
             ], [
@@ -45,12 +46,14 @@ class DatabaseSeeder extends Seeder
                 'email' => 'nike@gmail.com',
                 'password' => Hash::make('1234567890'),
                 'logo' => 'jdjfhfhfebfjfj.png',
+                'description' => 'this is description',
                 'phone_number' => '8193456789',
                 'percentage' => 0.4,
             ]
         ]);
         // CREATE CONST COLORS
         DB::table('colors')->insert([
+            ['color' => 'No Color', 'hex' => '#FFFFFF'],
             ['color' => 'Red', 'hex' => '#FF0000'],
             ['color' => 'Green', 'hex' => '#00FF00'],
             ['color' => 'Blue', 'hex' => '#0000FF'],
@@ -59,6 +62,7 @@ class DatabaseSeeder extends Seeder
         ]);
         // CREATE CONST SIZES
         DB::table('sizes')->insert([
+            ['size' => 'free size', 'type_id' => 1],
             ['size' => 'XS', 'type_id' => 1],
             ['size' => 'S', 'type_id' => 1],
             ['size' => 'M', 'type_id' => 1],
@@ -66,6 +70,7 @@ class DatabaseSeeder extends Seeder
             ['size' => 'XL', 'type_id' => 1],
             ['size' => 'XXL', 'type_id' => 1],
             ['size' => 'XXXL', 'type_id' => 1],
+            ['size' => 'free size', 'type_id' => 2],
         ]);
         DB::table('types')->insert([
             ['type' => 'international'],

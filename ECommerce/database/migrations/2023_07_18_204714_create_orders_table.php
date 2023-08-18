@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->double('Total_Price')->default(0.0);
+            $table->boolean('state')->default(false);
             $table->timestamps();
         });
     }

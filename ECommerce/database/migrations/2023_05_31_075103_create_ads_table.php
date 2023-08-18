@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admin_id')->constrained('admins')->cascadeOnDelete();
-            $table->string('image');
+            $table->text('image');
             // $table->timestamps();
         });
     }

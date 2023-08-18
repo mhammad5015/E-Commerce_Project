@@ -203,17 +203,22 @@ class AuthController extends Controller
             'password' => 'required|confirmed',
             'phone_number' => 'required|min:9|max:10',
             'address' => 'required',
-            'logo' => ['image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
+            'logo' => ['required', 'image', 'mimes:jpeg,png,gif,bmp,jpg,svg'],
+            'percentage' => 'required',
             'description',
         ]);
-        // inserting in admins tablex`
-        $input = $request->except('address');
-        $input['password'] = Hash::make($input['password']);
-        $input['token'] = Str::random(60);
-        $input['logo'] = 'storage/' . $request->file('logo')->store('images', 'public');
-        $admin = Admin::create($input);
+        $admin = new Admin();
+        $admin->company_name = $request->company_name;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+        $admin->phone_number = $request->phone_number;
+        $admin->percentage = $request->percentage;
+        $admin->logo = 'storage/' . $request->file('logo')->store('images', 'public');
+        if (isset($request->description)) {
+            $admin->description = $request->description;
+        }
+        $admin->save();
         $addresses = $request->only('address');
-        // inserting in addresses table
         foreach ($addresses as $addr) {
             foreach ($addr as $a) {
                 $address[] = DB::table('addresses')->insert([
@@ -222,7 +227,6 @@ class AuthController extends Controller
                 ]);
             }
         }
-        // get admin profile
         $admin_data = $admin->load('addresses');
         // sending response
         return response()->json([
